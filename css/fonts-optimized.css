@@ -1,0 +1,97 @@
+/**
+ * Optimized Self-Hosted Fonts
+ * - Latin subset only (50-70% smaller)
+ * - WOFF2 format (best compression, supported by 95%+ browsers)
+ * - font-display: swap for instant text rendering
+ * - Preload critical fonts for better performance
+ */
+
+/* Inter 300 (Light) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts-optimized/inter-v20-latin-300.woff2') format('woff2');
+}
+
+/* Inter 400 (Regular) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts-optimized/inter-v20-latin-regular.woff2') format('woff2');
+}
+
+/* Inter 500 (Medium) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts-optimized/inter-v20-latin-500.woff2') format('woff2');
+}
+
+/* Inter 600 (SemiBold) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts-optimized/inter-v20-latin-600.woff2') format('woff2');
+}
+
+/* Inter 700 (Bold) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts-optimized/inter-v20-latin-700.woff2') format('woff2');
+}
+
+/* Cormorant Garamond 300 (Light) */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts-optimized/cormorant-garamond-v21-latin-300.woff2') format('woff2');
+}
+
+/* Cormorant Garamond 400 (Regular) */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts-optimized/cormorant-garamond-v21-latin-regular.woff2') format('woff2');
+}
+
+/* Cormorant Garamond 600 (SemiBold) */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts-optimized/cormorant-garamond-v21-latin-600.woff2') format('woff2');
+}
+
+/* Cormorant Garamond 700 (Bold) */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts-optimized/cormorant-garamond-v21-latin-700.woff2') format('woff2');
+}
+
+/* Pinyon Script (Regular) */
+@font-face {
+  font-family: 'Pinyon Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts-optimized/pinyon-script-v24-latin-regular.woff2') format('woff2');
+}

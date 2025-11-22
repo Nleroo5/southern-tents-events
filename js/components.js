@@ -44,12 +44,13 @@ function initHeaderScroll() {
   if (!header) return;
 
   const handleScroll = throttle(() => {
-    // For homepage, services, gallery, FAQ, and contact pages - check if scrolled past hero section
+    // For homepage, services, gallery, FAQ, contact, and terms pages - check if scrolled past hero section
     const hasHero = document.body.classList.contains('home') ||
                     document.body.classList.contains('services') ||
                     document.body.classList.contains('gallery') ||
                     document.body.classList.contains('faq') ||
-                    document.body.classList.contains('contact');
+                    document.body.classList.contains('contact') ||
+                    document.body.classList.contains('terms');
     const hero = document.querySelector('.hero');
     const scrollThreshold = hasHero && hero ? hero.offsetHeight : 50;
 

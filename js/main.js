@@ -50,37 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
-
-  // Performance: Preload critical resources
-  const preloadLinks = document.querySelectorAll('link[rel="preload"]');
-  if ('connection' in navigator && navigator.connection.effectiveType) {
-    // Adjust behavior based on connection speed
-    const connectionType = navigator.connection.effectiveType;
-    if (connectionType === 'slow-2g' || connectionType === '2g') {
-      // Disable non-critical animations on slow connections
-      document.documentElement.style.setProperty('--transition-base', '0ms');
-      document.documentElement.style.setProperty('--transition-slow', '0ms');
-    }
-  }
-
-  // Log initialization
-  console.log('Southern Tents and Events website initialized');
 });
-
-// Handle page visibility changes
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    // Pause any running animations or videos when tab is not visible
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => video.pause());
-  }
-});
-
-// Service Worker registration (for PWA capabilities - optional)
-if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => console.log('SW registered:', registration))
-      .catch(err => console.log('SW registration failed:', err));
-  });
-}

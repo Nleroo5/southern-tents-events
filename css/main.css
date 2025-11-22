@@ -94,11 +94,12 @@ body.home .header-scrolled {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Transparent header for services, gallery, FAQ, and contact pages */
+/* Transparent header for services, gallery, FAQ, contact, and terms pages */
 body.services .header,
 body.gallery .header,
 body.faq .header,
-body.contact .header {
+body.contact .header,
+body.terms .header {
   position: absolute;
   width: 100%;
   background-color: transparent;
@@ -106,10 +107,20 @@ body.contact .header {
   box-shadow: none;
 }
 
+/* Privacy page header - solid from start (no hero image) */
+body.privacy .header {
+  position: sticky;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-linen);
+  box-shadow: var(--shadow-sm);
+}
+
 body.services .header-scrolled,
 body.gallery .header-scrolled,
 body.faq .header-scrolled,
-body.contact .header-scrolled {
+body.contact .header-scrolled,
+body.terms .header-scrolled,
+body.privacy .header-scrolled {
   position: sticky;
   background-color: rgba(250, 248, 243, 0.85);
   backdrop-filter: blur(12px);
@@ -186,11 +197,12 @@ body.home .header:not(.header-scrolled) .nav-link.btn:hover {
   color: #000000;
 }
 
-/* White text for transparent header on services, gallery, FAQ, and contact pages */
+/* White text for transparent header on services, gallery, FAQ, contact, and terms pages */
 body.services .header:not(.header-scrolled) .nav-link,
 body.gallery .header:not(.header-scrolled) .nav-link,
 body.faq .header:not(.header-scrolled) .nav-link,
-body.contact .header:not(.header-scrolled) .nav-link {
+body.contact .header:not(.header-scrolled) .nav-link,
+body.terms .header:not(.header-scrolled) .nav-link {
   color: var(--color-white);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -198,7 +210,8 @@ body.contact .header:not(.header-scrolled) .nav-link {
 body.services .header:not(.header-scrolled) .nav-link.btn,
 body.gallery .header:not(.header-scrolled) .nav-link.btn,
 body.faq .header:not(.header-scrolled) .nav-link.btn,
-body.contact .header:not(.header-scrolled) .nav-link.btn {
+body.contact .header:not(.header-scrolled) .nav-link.btn,
+body.terms .header:not(.header-scrolled) .nav-link.btn {
   border-color: var(--color-white);
   color: var(--color-white);
   background-color: transparent;
@@ -207,7 +220,8 @@ body.contact .header:not(.header-scrolled) .nav-link.btn {
 body.services .header:not(.header-scrolled) .nav-link.btn:hover,
 body.gallery .header:not(.header-scrolled) .nav-link.btn:hover,
 body.faq .header:not(.header-scrolled) .nav-link.btn:hover,
-body.contact .header:not(.header-scrolled) .nav-link.btn:hover {
+body.contact .header:not(.header-scrolled) .nav-link.btn:hover,
+body.terms .header:not(.header-scrolled) .nav-link.btn:hover {
   background-color: var(--color-white);
   color: #000000;
 }
@@ -228,7 +242,8 @@ body.home .header:not(.header-scrolled) .nav-link:hover {
 body.services .header:not(.header-scrolled) .nav-link:hover,
 body.gallery .header:not(.header-scrolled) .nav-link:hover,
 body.faq .header:not(.header-scrolled) .nav-link:hover,
-body.contact .header:not(.header-scrolled) .nav-link:hover {
+body.contact .header:not(.header-scrolled) .nav-link:hover,
+body.terms .header:not(.header-scrolled) .nav-link:hover {
   color: var(--color-white);
   opacity: 0.9;
 }
@@ -271,7 +286,9 @@ body.home .header:not(.header-scrolled) .nav-toggle-bar {
 body.services .header:not(.header-scrolled) .nav-toggle-bar,
 body.gallery .header:not(.header-scrolled) .nav-toggle-bar,
 body.faq .header:not(.header-scrolled) .nav-toggle-bar,
-body.contact .header:not(.header-scrolled) .nav-toggle-bar {
+body.contact .header:not(.header-scrolled) .nav-toggle-bar,
+body.terms .header:not(.header-scrolled) .nav-toggle-bar,
+body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   background-color: var(--color-white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -1175,6 +1192,27 @@ body.contact .header:not(.header-scrolled) .nav-toggle-bar {
 
 .footer-bottom p {
   margin: 0;
+}
+
+/* Drive Lead Media Footer Credit */
+.footer-credit {
+  margin-top: var(--space-3);
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  opacity: 1;
+}
+
+.footer-credit-link {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color var(--transition-base);
+  font-weight: 500;
+}
+
+.footer-credit-link:hover {
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 /* Mobile Responsive */
