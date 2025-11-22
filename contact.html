@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Southern Tents and Events</title>
+  <meta name="description" content="Contact Southern Tents and Events for a free quote. Call, email, or fill out our contact form to discuss your event needs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="contact">
+  <header class="header">
+    <nav class="nav container">
+      <a href="/" class="nav-brand">
+        <img src="/images/logo-white.png" alt="Southern Tents and Events Logo" class="nav-logo">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/services.html" class="nav-link">Services</a></li>
+        <li><a href="/gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+        <li><a href="/contact.html" class="nav-link btn btn-primary btn-sm active">Get Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, rgba(139, 115, 85, 0.35) 0%, rgba(61, 57, 53, 0.55) 100%), url('/images/quote-request-tent-rental-southern-events.jpg') center/cover no-repeat; position: relative;">
+      <div class="container text-center" style="position: relative; z-index: 1;">
+        <h1 style="color: var(--color-white); font-size: var(--text-6xl); margin-bottom: var(--space-6); font-family: var(--font-accent); font-weight: var(--font-normal); line-height: var(--leading-tight); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);">Request a Quote</h1>
+        <p style="color: var(--color-background); font-size: var(--text-3xl); max-width: 700px; margin: 0 auto var(--space-8); line-height: var(--leading-relaxed); font-weight: var(--font-normal); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15);">
+          Let's start planning your perfect event together
+        </p>
+      </div>
+    </section>
+
+    <section class="section wood-option-1" style="padding: var(--space-6) 0;">
+      <div class="container" style="max-width: 900px;">
+        <div style="text-align: center; margin-bottom: var(--space-4);">
+          <h2 class="mb-2" style="color: var(--color-olive); font-size: var(--text-3xl);">Request a Quote</h2>
+          <p class="text-muted" style="font-size: var(--text-base);">
+            Select the items you need and we'll get back to you within 48 hours
+          </p>
+        </div>
+
+        <form id="contact-form">
+
+          <!-- STEP 1: Event Details -->
+          <div style="background-color: var(--color-background); padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-4); border: 2px solid var(--color-olive);">
+            <h3 style="font-family: var(--font-accent); color: var(--color-olive); margin-bottom: var(--space-3); font-size: var(--text-3xl); text-align: center;">
+              Event Details
+            </h3>
+
+            <div class="grid grid-cols-2" style="gap: var(--space-3);">
+              <div class="form-group">
+                <label for="name" class="form-label form-label-required" style="color: var(--color-olive);">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  placeholder="John Smith"
+                  required
+                >
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="form-label form-label-required" style="color: var(--color-olive);">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input"
+                  placeholder="(770) 328-2920"
+                  required
+                >
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label form-label-required" style="color: var(--color-olive);">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="john@example.com"
+                  required
+                >
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="event-date" class="form-label form-label-required" style="color: var(--color-olive);">Event Date</label>
+                <input
+                  type="date"
+                  id="event-date"
+                  name="event-date"
+                  class="form-input"
+                  required
+                >
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="location" class="form-label" style="color: var(--color-olive);">Event Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  class="form-input"
+                  placeholder="City, GA"
+                >
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="guests" class="form-label" style="color: var(--color-olive);">Expected Guest Count</label>
+                <input
+                  type="number"
+                  id="guests"
+                  name="guests"
+                  class="form-input"
+                  placeholder="100"
+                  min="0"
+                >
+                <span class="form-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Select Items & Quantities -->
+          <div style="background-color: var(--color-background); padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-4); border: 2px solid var(--color-olive);">
+            <h3 style="font-family: var(--font-accent); color: var(--color-olive); margin-bottom: var(--space-2); font-size: var(--text-3xl); text-align: center;">
+              Select Rental Items
+            </h3>
+            <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-3); text-align: center;">
+              All rentals include delivery. Setup fees apply to larger tents.
+            </p>
+
+            <!-- Tents -->
+            <div class="item-category">
+              <h4 class="category-title">Tents</h4>
+              <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>20x20 All Purpose Canopy</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$300.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="tent-20x20-canopy">−</button>
+                    <input type="number" name="tent-20x20-canopy" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="tent-20x20-canopy">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>20x20 High Peak Tent</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$375.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="tent-20x20-peak">−</button>
+                    <input type="number" name="tent-20x20-peak" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="tent-20x20-peak">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>20x30 All Purpose Canopy</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$380.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="tent-20x30-canopy">−</button>
+                    <input type="number" name="tent-20x30-canopy" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="tent-20x30-canopy">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>20x40 High Peak Tent</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$700.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="tent-20x40-peak">−</button>
+                    <input type="number" name="tent-20x40-peak" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="tent-20x40-peak">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dance Floors -->
+            <div class="item-category">
+              <h4 class="category-title">Dance Floors</h4>
+              <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>12x12 Dark Maple Dance Floor</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$200.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="dancefloor-12x12">−</button>
+                    <input type="number" name="dancefloor-12x12" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="dancefloor-12x12">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>15x15 Dark Maple Dance Floor</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$350.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="dancefloor-15x15">−</button>
+                    <input type="number" name="dancefloor-15x15" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="dancefloor-15x15">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>18x18 Dark Maple Dance Floor</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$500.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="dancefloor-18x18">−</button>
+                    <input type="number" name="dancefloor-18x18" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="dancefloor-18x18">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>24x24 Dark Maple Dance Floor</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$800.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="dancefloor-24x24">−</button>
+                    <input type="number" name="dancefloor-24x24" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="dancefloor-24x24">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Furniture -->
+            <div class="item-category">
+              <h4 class="category-title">Furniture</h4>
+              <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>8' Farm Table</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$85.00 each</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="table-farm-8ft">−</button>
+                    <input type="number" name="table-farm-8ft" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="table-farm-8ft">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>Crossback Chair</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$8.00 each</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="chair-crossback">−</button>
+                    <input type="number" name="chair-crossback" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="chair-crossback">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lighting -->
+            <div class="item-category">
+              <h4 class="category-title">Lighting</h4>
+              <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>String Lights</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$1.25 per sq ft</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="lights-string">−</button>
+                    <input type="number" name="lights-string" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="lights-string">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>Light Support Pole</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$10.00 each</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="lights-pole">−</button>
+                    <input type="number" name="lights-pole" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="lights-pole">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Party Equipment -->
+            <div class="item-category">
+              <h4 class="category-title">Party Equipment</h4>
+              <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>Popcorn Machine</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$75.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="popcorn-machine">−</button>
+                    <input type="number" name="popcorn-machine" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="popcorn-machine">+</button>
+                  </div>
+                </div>
+
+                <div class="quantity-card">
+                  <div class="quantity-card-header">
+                    <h5>Cotton Candy Machine</h5>
+                    <p class="text-muted" style="font-size: var(--text-sm);">$75.00</p>
+                  </div>
+                  <div class="quantity-stepper">
+                    <button type="button" class="qty-btn qty-minus" data-item="cotton-candy-machine">−</button>
+                    <input type="number" name="cotton-candy-machine" class="qty-input" value="0" min="0">
+                    <button type="button" class="qty-btn qty-plus" data-item="cotton-candy-machine">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: Additional Details -->
+          <div style="background-color: var(--color-background); padding: var(--space-4); border-radius: var(--radius-lg); margin-bottom: var(--space-4); border: 2px solid var(--color-olive);">
+            <h3 style="font-family: var(--font-accent); color: var(--color-olive); margin-bottom: var(--space-3); font-size: var(--text-3xl); text-align: center;">
+              Special Requests
+            </h3>
+
+            <div class="form-group">
+              <label for="message" class="form-label" style="color: var(--color-olive);">Tell us about your event (optional)</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                placeholder="Additional details about your event, setup preferences, or special requests"
+                style="min-height: 120px;"
+              ></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Quote Request</button>
+          <p class="form-help text-center mt-2">
+            We'll respond within 48 hours with a personalized quote
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Info Section (Bottom) -->
+    <section class="section" style="background-color: var(--color-sage-light);">
+      <div class="container container-md text-center">
+        <h2 class="mb-6" style="color: black;">Prefer to Call or Email?</h2>
+        <p class="mb-6" style="font-size: var(--text-lg);">
+          Our friendly team is here to help answer your questions and provide expert guidance for your event.
+        </p>
+        <div class="flex justify-center gap-4" style="flex-wrap: wrap;">
+          <a href="tel:+17703282920" class="btn btn-primary btn-lg" style="color: black;">770-328-2920</a>
+          <a href="mailto:Southerntentsevents@gmail.com" class="btn btn-outline btn-lg" style="color: black;">Southerntentsevents@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- Left Column: Brand -->
+        <div class="footer-brand">
+          <h3 class="footer-brand-name">
+            <span class="brand-script">Southern</span>
+            <span class="brand-serif">Tents & Events</span>
+          </h3>
+          <p class="footer-tagline">Creating unforgettable memories</p>
+        </div>
+
+        <!-- Center Column: Navigation -->
+        <div class="footer-nav-section">
+          <nav class="footer-nav">
+            <a href="/services.html" class="footer-link">Services</a>
+            <a href="/gallery.html" class="footer-link">Gallery</a>
+            <a href="/faq.html" class="footer-link">FAQ</a>
+            <a href="/contact.html" class="footer-link">Contact</a>
+          </nav>
+        </div>
+
+        <!-- Right Column: Contact & Social -->
+        <div class="footer-contact-section">
+          <div class="footer-contact">
+            <a href="tel:+17703282920" class="footer-contact-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+              </svg>
+              <span>770-328-2920</span>
+            </a>
+            <a href="mailto:Southerntentsevents@gmail.com" class="footer-contact-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              <span>Southerntentsevents@gmail.com</span>
+            </a>
+          </div>
+
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61577684130679" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/southerntentsandevents" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2025</span> Southern Tents and Events. All rights reserved. | <a href="/terms.html" style="color: inherit; text-decoration: underline;">Terms & Conditions</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Thank You Modal -->
+  <div class="thank-you-modal" id="thank-you-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-ornament">✦</div>
+      <h2 class="modal-title">Thank You!</h2>
+      <div class="modal-message">
+        <p style="margin-bottom: var(--space-3);">
+          Your quote request has been received! We'll review your requirements and get back to you <strong>within 48 hours</strong> with a personalized quote.
+        </p>
+        <p>
+          If you have any urgent questions, feel free to call us at <strong>770-328-2920</strong>.
+        </p>
+      </div>
+      <div class="modal-actions">
+        <button onclick="closeThankYouModal()" class="btn btn-primary btn-lg">Close</button>
+        <a href="/gallery.html" class="btn btn-outline btn-lg">View Gallery</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/quote-form.js"></script>
+</body>
+</html>

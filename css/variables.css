@@ -1,0 +1,188 @@
+/*
+  Design System - CSS Custom Properties
+  Southern Tents and Events
+*/
+
+:root {
+  /* ============================================
+     BRAND COLORS - Warm Rustic String Light Farm Aesthetic
+     ============================================ */
+  --color-primary: #c9a86a;          /* Warm golden amber - string light glow */
+  --color-secondary: #8b7355;        /* Rich warm wood/walnut tone */
+  --color-accent: #d4a574;           /* Soft amber - warm call-to-action */
+  --color-background: #faf8f3;       /* Soft cream/ivory - main background */
+
+  /* Extended color palette */
+  --color-primary-light: #ddbf8a;    /* Lighter golden amber for hover states */
+  --color-primary-dark: #a88a52;     /* Deeper amber for emphasis */
+  --color-secondary-light: #a89177;  /* Lighter warm wood */
+  --color-accent-dark: #b8925f;      /* Deeper warm amber accent */
+
+  /* Sophisticated accent colors */
+  --color-sage: #9ba88d;             /* Subtle sage green accent */
+  --color-sage-light: #d4ddd0;       /* Soft sage - rustic farm backgrounds */
+  --color-olive: #5d622a;            /* Rich olive/moss green - nature accent */
+  --color-cream: #faf8f3;            /* Soft ivory cream */
+  --color-cream-warm: #f5f1e8;       /* Warm cream - farmhouse neutral */
+  --color-terracotta: #d4a574;       /* Warm clay tone */
+  --color-rose: #d4b5b0;             /* Dusty rose/mauve */
+  --color-linen: #e8e4dc;            /* Natural linen */
+
+  /* Neutral colors - Warm & sophisticated */
+  --color-white: #ffffff;
+  --color-black: #2d2d2d;
+  --color-gray-100: #f8f6f2;
+  --color-gray-200: #f0ece5;
+  --color-gray-300: #ddd9d0;
+  --color-gray-400: #c4bcb0;
+  --color-gray-500: #978e82;
+  --color-gray-600: #6d6760;
+  --color-gray-700: #524d47;
+  --color-gray-800: #3d3935;
+  --color-gray-900: #2d2d2d;
+
+  /* Semantic colors */
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-info: #0284c7;
+
+  /* ============================================
+     TYPOGRAPHY - Sophisticated & Elegant
+     ============================================ */
+  --font-heading: 'Arno Pro', Georgia, serif;
+  --font-body: 'Arno Pro', Georgia, serif;
+  --font-accent: 'Pinyon Script', cursive;
+  --font-nav: 'Pinyon Script', cursive;
+  --font-mono: 'SF Mono', Monaco, monospace;
+
+  /* Type scale (1.25 ratio - Major Third) */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+
+  /* Font weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Line heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ============================================
+     SPACING SCALE (8px base unit)
+     ============================================ */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.25rem;    /* 4px */
+  --space-1: 0.5rem;       /* 8px */
+  --space-1-5: 0.75rem;    /* 12px */
+  --space-2: 1rem;         /* 16px */
+  --space-2-5: 1.25rem;    /* 20px */
+  --space-3: 1.5rem;       /* 24px */
+  --space-4: 2rem;         /* 32px */
+  --space-5: 2.5rem;       /* 40px */
+  --space-6: 3rem;         /* 48px */
+  --space-8: 4rem;         /* 64px */
+  --space-10: 5rem;        /* 80px */
+  --space-12: 6rem;        /* 96px */
+  --space-16: 8rem;        /* 128px */
+  --space-20: 10rem;       /* 160px */
+  --space-24: 12rem;       /* 192px */
+
+  /* ============================================
+     SHADOWS - Minimal & Subtle for Rustic Aesthetic
+     ============================================ */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 6px 12px rgba(0, 0, 0, 0.08);
+  --shadow-2xl: 0 10px 20px rgba(0, 0, 0, 0.10);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+
+  /* ============================================
+     BORDER RADIUS - Sharp for Vintage Aesthetic
+     ============================================ */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px - sharp vintage */
+  --radius-md: 0.375rem;   /* 6px */
+  --radius-lg: 0.5rem;     /* 8px - main buttons/cards */
+  --radius-xl: 0.75rem;    /* 12px */
+  --radius-2xl: 1rem;      /* 16px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* ============================================
+     TRANSITIONS
+     ============================================ */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Easing functions */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  --container-xs: 640px;
+  --container-sm: 768px;
+  --container-md: 1024px;
+  --container-lg: 1280px;
+  --container-xl: 1536px;
+
+  --container-padding: var(--space-4);
+
+  /* Z-index scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ============================================
+     BREAKPOINTS (for reference in JS)
+     ============================================ */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Uncomment and adjust when dark mode is needed */
+    /* --color-background: #1a1a1a; */
+    /* --color-primary: #4a5f7a; */
+  }
+}
