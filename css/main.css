@@ -1215,6 +1215,18 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   text-decoration: none;
 }
 
+/* FAQ Cards with Brown Outline and Hover Animation */
+.faq-item {
+  border: 2px solid #8B6F47 !important;
+  transition: all 0.3s ease !important;
+}
+
+.faq-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 16px rgba(139, 111, 71, 0.25), 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  border-color: #A0826D !important;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .footer-content {
