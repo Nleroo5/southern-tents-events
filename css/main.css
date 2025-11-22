@@ -1227,6 +1227,11 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   border-color: #A0826D !important;
 }
 
+/* FAQ Answer Text - Bold */
+.faq-item p {
+  font-weight: 600 !important;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .footer-content {
