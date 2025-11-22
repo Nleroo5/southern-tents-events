@@ -1,0 +1,39 @@
+# Development files
+node_modules
+.env
+.env.local
+.DS_Store
+
+# Build scripts (not needed in production)
+optimize-images.js
+optimize-fonts.js
+build-optimized.js
+update-html-images.js
+update-html-fonts.js
+update-html-production.js
+add-drive-lead-media.js
+download-fonts-simple.sh
+verify.sh
+
+# Backup folders
+images-backup/
+
+# Documentation
+*.md
+DRIVE-LEAD-MEDIA-SEO-AUDIT.md
+DRIVE-LEAD-MEDIA-SUMMARY.txt
+OPTIMIZATION-SUMMARY.txt
+PERFORMANCE-AUDIT.md
+TODO.md
+README-SETUP.md
+DEPLOYMENT.md
+DESIGN-TRANSFORMATION.md
+FORMSPREE-SETUP.md
+RUSTIC-DESIGN-NOTES.md
+
+# Git
+.git
+.gitignore
+
+# Development dependencies
+package-lock.json
