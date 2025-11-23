@@ -4,11 +4,6 @@ node_modules
 .env.local
 .DS_Store
 
-# Backend API (not deployed with frontend)
-server.js
-package.json
-package-lock.json
-
 # Build scripts (not needed in production)
 optimize-images.js
 optimize-fonts.js
