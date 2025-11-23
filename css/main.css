@@ -516,8 +516,8 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 /* UNIFIED MOBILE HERO POSITIONING - ALL DEVICES <768px */
 @media (max-width: 767px) {
   .hero {
-    background-size: auto 115% !important;
-    background-position: center 50% !important;
+    background-size: auto 180% !important;
+    background-position: center 35% !important;
   }
 }
 
