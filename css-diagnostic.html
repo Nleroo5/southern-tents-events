@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Diagnostic - Southern Tents & Events</title>
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .diagnostic-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px solid #c9a86a;
+        }
+        .diagnostic-box h2 {
+            color: #c9a86a;
+            margin-top: 0;
+        }
+        .result {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #c9a86a;
+        }
+        .critical {
+            background: #fee;
+            border-left-color: #f00;
+        }
+        .success {
+            background: #efe;
+            border-left-color: #0a0;
+        }
+        .hero-sample {
+            width: 100%;
+            height: 200px;
+            background-image: url('/images/white-wedding-tent-rental-senoia-georgia.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 10%;
+            border: 3px solid #c9a86a;
+            margin: 20px 0;
+            position: relative;
+        }
+        .hero-sample::after {
+            content: 'Hero Preview (should show bottom of tent at 10%)';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(201, 168, 106, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 CSS Diagnostic Tool</h1>
+
+    <div class="diagnostic-box">
+        <h2>Device Information</h2>
+        <div class="result" id="device-info"></div>
+    </div>
+
+    <div class="diagnostic-box">
+        <h2>Viewport Size</h2>
+        <div class="result" id="viewport-info"></div>
+    </div>
+
+    <div class="diagnostic-box">
+        <h2>Which Media Query Applies?</h2>
+        <div class="result" id="media-query-info"></div>
+    </div>
+
+    <div class="diagnostic-box">
+        <h2>CSS File Check</h2>
+        <div class="result" id="css-file-check">Checking...</div>
+    </div>
+
+    <div class="diagnostic-box">
+        <h2>Computed Background Position</h2>
+        <div class="result" id="computed-bg-pos">Checking...</div>
+    </div>
+
+    <div class="diagnostic-box">
+        <h2>Hero Sample (10% Position)</h2>
+        <div class="hero-sample"></div>
+        <p style="margin-top: 10px; font-size: 14px;">
+            At 10%, you should see the BOTTOM portion of the tent (ground/legs).
+            If you see the top/sky, the CSS is not being applied correctly.
+        </p>
+    </div>
+
+    <!-- Hidden hero element for testing -->
+    <div class="hero" style="height: 200px; width: 100%; position: absolute; left: -9999px;" id="test-hero"></div>
+
+    <script>
+        // Device Info
+        document.getElementById('device-info').innerHTML = `
+            User Agent: ${navigator.userAgent}<br>
+            Platform: ${navigator.platform}<br>
+            Screen: ${screen.width}x${screen.height}<br>
+            Device Pixel Ratio: ${window.devicePixelRatio}
+        `;
+
+        // Viewport Info
+        function updateViewport() {
+            document.getElementById('viewport-info').innerHTML = `
+                Window: ${window.innerWidth}px × ${window.innerHeight}px<br>
+                Document: ${document.documentElement.clientWidth}px × ${document.documentElement.clientHeight}px
+            `;
+        }
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+
+        // Media Query Check
+        function checkMediaQueries() {
+            const queries = {
+                '≤375px': window.matchMedia('(max-width: 375px)'),
+                '376-640px (iPhone 15 Pro range)': window.matchMedia('(min-width: 376px) and (max-width: 640px)'),
+                '641-768px': window.matchMedia('(min-width: 641px) and (max-width: 768px)'),
+                '>768px': window.matchMedia('(min-width: 769px)')
+            };
+
+            let html = '';
+            for (const [name, mq] of Object.entries(queries)) {
+                const matches = mq.matches;
+                html += `<div class="${matches ? 'success' : ''}" style="padding: 5px; margin: 5px 0;">
+                    ${matches ? '✅' : '❌'} ${name}: ${matches ? 'MATCHES' : 'does not match'}
+                </div>`;
+            }
+            document.getElementById('media-query-info').innerHTML = html;
+        }
+        checkMediaQueries();
+        window.addEventListener('resize', checkMediaQueries);
+
+        // Check CSS file
+        fetch('/css/styles.min.css')
+            .then(response => response.text())
+            .then(css => {
+                const has10percent = css.includes('background-position:center 10%');
+                const count10 = (css.match(/background-position:center 10%/g) || []).length;
+
+                document.getElementById('css-file-check').innerHTML = `
+                    <div class="${has10percent ? 'success' : 'critical'}">
+                        ${has10percent ? '✅' : '❌'} CSS file contains "background-position:center 10%"<br>
+                        Found ${count10} instance(s) of 10% positioning
+                    </div>
+                `;
+
+                // Check for the specific media queries
+                const has376to640 = css.match(/@media \(min-width:376px\) and \(max-width:640px\)\{\.hero\{[^}]*background-position:center 10%/);
+                const hasMax375 = css.match(/@media \(max-width:375px\)\{\.hero\{[^}]*background-position:center 10%/);
+
+                document.getElementById('css-file-check').innerHTML += `
+                    <div class="${has376to640 ? 'success' : 'critical'}">
+                        ${has376to640 ? '✅' : '❌'} 376-640px media query has 10%
+                    </div>
+                    <div class="${hasMax375 ? 'success' : 'critical'}">
+                        ${hasMax375 ? '✅' : '❌'} ≤375px media query has 10%
+                    </div>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('css-file-check').innerHTML = `
+                    <div class="critical">❌ Error loading CSS file: ${err}</div>
+                `;
+            });
+
+        // Check computed style
+        window.addEventListener('load', () => {
+            const testHero = document.getElementById('test-hero');
+            const computed = window.getComputedStyle(testHero);
+            const bgPos = computed.backgroundPosition;
+
+            const is10percent = bgPos.includes('10%') || bgPos.includes('bottom');
+
+            document.getElementById('computed-bg-pos').innerHTML = `
+                <div class="${is10percent ? 'success' : 'critical'}">
+                    ${is10percent ? '✅' : '❌'} Computed background-position: <strong>${bgPos}</strong>
+                </div>
+                <div style="margin-top: 10px; font-size: 12px;">
+                    Expected: Should contain "10%" for your device<br>
+                    Width: ${window.innerWidth}px should match 376-640px range
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
