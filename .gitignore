@@ -1,7 +1,5 @@
-# Backend API files (not deployed with static frontend)
+# Backend server (not needed for Vercel serverless)
 server.js
-package.json
-package-lock.json
 
 # System Files
 .DS_Store
