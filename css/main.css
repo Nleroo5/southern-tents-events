@@ -314,6 +314,13 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 }
 
 @media (max-width: 768px) {
+  /* Ensure transparent header on homepage mobile */
+  body.home .header:not(.header-scrolled) {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+  }
+
   .nav-toggle {
     display: flex;
   }
