@@ -1,5 +1,3 @@
 {
-  "buildCommand": null,
-  "cleanUrls": true,
-  "trailingSlash": false
+  "framework": null
 }
