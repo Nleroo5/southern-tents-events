@@ -439,7 +439,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (max-width: 375px) {
   .hero {
     height: 100vh;
-    background-position: center 55%;
+    background-position: center 55% !important;
   }
 
   .hero-title {
@@ -467,7 +467,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (min-width: 376px) and (max-width: 640px) {
   .hero {
     height: 100vh;
-    background-position: center 55%;
+    background-position: center 55% !important;
   }
 
   .hero-title {
@@ -495,7 +495,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (min-width: 641px) and (max-width: 768px) {
   .hero {
     height: 100vh;
-    background-position: center 55%;
+    background-position: center 55% !important;
   }
 
   .hero-title {
