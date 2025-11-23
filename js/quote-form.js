@@ -153,8 +153,12 @@ function initQuoteFormSubmission() {
     }
 
     try {
-      // Submit to custom backend
-      const response = await fetch('http://localhost:3000/api/quote', {
+      // Submit to API endpoint (works for both local and production)
+      const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:3000/api/quote'
+        : '/api/quote';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
