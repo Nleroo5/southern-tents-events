@@ -381,7 +381,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   text-align: center;
   background-image: url('/images/white-wedding-tent-rental-senoia-georgia.jpg');
   background-size: cover;
-  background-position: center 72%;
+  background-position: center 70%;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -435,11 +435,11 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   flex-wrap: wrap;
 }
 
-/* Enhanced Hero Section Responsive Scaling */
+/* Enhanced Hero Section Responsive Scaling - REPLACED WITH SINGLE MEDIA QUERY BELOW */
+/* ALL MOBILE SIZES NOW USE 50% POSITIONING VIA @media (max-width: 767px) AT END OF FILE */
 @media (max-width: 375px) {
   .hero {
     height: 100vh;
-    background-position: center 55% !important;
   }
 
   .hero-title {
@@ -467,7 +467,6 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (min-width: 376px) and (max-width: 640px) {
   .hero {
     height: 100vh;
-    background-position: center 55% !important;
   }
 
   .hero-title {
@@ -495,7 +494,6 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (min-width: 641px) and (max-width: 768px) {
   .hero {
     height: 100vh;
-    background-position: center 55% !important;
   }
 
   .hero-title {
@@ -512,6 +510,14 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 
   .hero-cta .btn {
     width: 100%;
+  }
+}
+
+/* UNIFIED MOBILE HERO POSITIONING - ALL DEVICES <768px */
+@media (max-width: 767px) {
+  .hero {
+    background-size: auto 115% !important;
+    background-position: center 50% !important;
   }
 }
 
