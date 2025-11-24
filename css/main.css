@@ -894,6 +894,17 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   font-size: var(--text-lg);
 }
 
+/* Desktop only - bold feature text */
+@media (min-width: 769px) {
+  .feature-title {
+    font-weight: var(--font-bold);
+  }
+
+  .feature-description {
+    font-weight: var(--font-semibold);
+  }
+}
+
 /* ============================================
    GALLERY
    ============================================ */
