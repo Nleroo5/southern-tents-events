@@ -347,7 +347,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
     width: 100%;
     padding: var(--space-3);
     text-align: center;
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     color: var(--color-gray-700) !important;
     text-shadow: none !important;
   }
