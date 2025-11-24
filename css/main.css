@@ -146,8 +146,9 @@ body.privacy .header-scrolled {
 
 /* Ensure nav-toggle is clickable when header is scrolled */
 .header-scrolled .nav-toggle {
-  z-index: 10;
+  z-index: 100;
   position: relative;
+  pointer-events: auto;
 }
 
 /* Hero sections on pages with transparent headers should extend behind the header */
@@ -164,6 +165,13 @@ body.contact .hero {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-5) 0;
+  position: relative;
+}
+
+.nav-brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
 .nav-logo {
@@ -300,7 +308,8 @@ section[id] {
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: calc(var(--z-sticky) + 2);
+  z-index: 100;
+  flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
