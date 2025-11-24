@@ -176,6 +176,24 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+
+  /* ============================================
+     HEADER HEIGHTS (for scroll offset)
+     ============================================ */
+  --header-height: 161px;  /* Mobile default */
+}
+
+/* Responsive header heights */
+@media (min-width: 481px) and (max-width: 767px) {
+  :root {
+    --header-height: 181px;  /* Tablet */
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 211px;  /* Desktop */
+  }
 }
 
 /* Dark mode support (future enhancement) */

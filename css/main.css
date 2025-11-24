@@ -4,6 +4,15 @@
 */
 
 /* ============================================
+   SCROLL BEHAVIOR - PROFESSIONAL ANCHOR NAVIGATION
+   ============================================ */
+/* Industry-standard solution for anchor links with fixed headers */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+/* ============================================
    BASE STYLES
    ============================================ */
 

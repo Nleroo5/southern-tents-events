@@ -412,92 +412,13 @@ function initScrollAnimations() {
   animatedElements.forEach(el => observer.observe(el));
 }
 
-// Services page anchor scrolling with header offset
-// Production-grade solution using getBoundingClientRect + window.scrollY
+// Services page anchor scrolling
+// Now handled entirely by CSS: scroll-behavior: smooth + scroll-padding-top
+// No JavaScript needed - browser handles it natively with fixed header offset
 function initServicesAnchorScroll() {
-  // Only run on services page
-  if (!document.body.classList.contains('services')) return;
-
-  // Get header height based on viewport width
-  function getHeaderOffset() {
-    const width = window.innerWidth;
-    if (width < 481) return 161;  // Mobile
-    if (width < 768) return 181;  // Tablet
-    return 211;  // Desktop
-  }
-
-  // Production-grade scroll function
-  // Formula: element.getBoundingClientRect().top + window.scrollY - offset
-  function scrollToSection(sectionId, useSmooth = false) {
-    const target = document.querySelector(sectionId);
-    if (!target) return;
-
-    // Get element's current position relative to viewport
-    const elementPosition = target.getBoundingClientRect().top;
-
-    // Get current scroll position (window.scrollY is modern, not deprecated pageYOffset)
-    const currentScroll = window.scrollY;
-
-    // Get header offset
-    let headerOffset = getHeaderOffset();
-
-    // Fine-tune adjustments for specific sections
-    if (sectionId === '#lighting') {
-      if (window.innerWidth > 768) {
-        headerOffset += 40; // Desktop: scroll 40px less down for lighting
-      } else {
-        headerOffset -= 20; // Mobile: scroll 20px more down for lighting
-      }
-    }
-
-    // Calculate final scroll position
-    // Formula: current viewport position + current scroll - header offset
-    const targetPosition = elementPosition + currentScroll - headerOffset;
-
-    // Scroll to calculated position
-    window.scrollTo({
-      top: targetPosition,
-      behavior: useSmooth ? 'smooth' : 'auto'
-    });
-  }
-
-  // Handle page load with hash (from external pages)
-  if (window.location.hash) {
-    // Prevent default scroll restoration
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    // CRITICAL: Scroll to top first to get accurate position
-    // Browser may have already scrolled to anchor, giving wrong getBoundingClientRect
-    window.scrollTo(0, 0);
-
-    // Wait for page to fully load and layout to settle
-    // Delay is critical for external page navigation (Chrome requires this)
-    setTimeout(() => {
-      scrollToSection(window.location.hash, false);
-    }, 100);
-  }
-
-  // Handle anchor link clicks
-  document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
-
-    const href = anchor.getAttribute('href');
-    if (href === '#') return;
-
-    e.preventDefault();
-    scrollToSection(href, true); // Use smooth scroll for clicks
-    history.pushState(null, null, href);
-  });
-
-  // Handle hash changes (for back/forward navigation)
-  window.addEventListener('hashchange', () => {
-    if (window.location.hash) {
-      scrollToSection(window.location.hash, true);
-    }
-  });
+  // CSS handles all anchor scrolling automatically
+  // This function left for future enhancements if needed
+  return;
 }
 
 // Export for use in main.js
