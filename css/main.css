@@ -2059,3 +2059,212 @@ picture img {
   }
 }
 
+/* ============================================
+   PROFESSIONAL LAYOUT ENHANCEMENTS
+   ============================================ */
+
+/* Ensure hero sections maintain proper height on all devices */
+.hero {
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+  }
+}
+
+/* Prevent layout shift during navigation */
+@media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+
+  /* Smooth transition when menu opens */
+  body.menu-open {
+    position: relative;
+  }
+}
+
+/* Enhanced card hover effects - desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .card,
+  .rustic-card,
+  .quantity-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover,
+  .rustic-card:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .quantity-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Disable hover animations on touch devices */
+@media (hover: none) {
+  .card:hover,
+  .rustic-card:hover,
+  .quantity-card:hover {
+    transform: none;
+  }
+}
+
+/* Better text readability on small screens */
+@media (max-width: 480px) {
+  body {
+    font-size: 16px; /* Prevent iOS zoom */
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Optimize table layouts for mobile */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: var(--space-2);
+  }
+}
+
+/* Consistent focus outline for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Optimize image loading and display */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+picture img {
+  object-fit: cover;
+}
+
+/* Ensure consistent section spacing across all pages */
+.section {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .section {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Larger touch targets for better UX */
+  button,
+  .btn,
+  a.btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+  }
+
+  /* Optimize form inputs */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents iOS zoom */
+    min-height: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .grid {
+    gap: var(--space-4);
+  }
+
+  /* Stack elements more aggressively on mobile */
+  .flex-row {
+    flex-direction: column;
+  }
+}
+
+/* Tablet-specific optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 720px;
+  }
+
+  /* 2-column grid for better tablet layout */
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ensure proper z-index stacking */
+.header {
+  z-index: var(--z-sticky);
+}
+
+.nav-menu {
+  z-index: var(--z-modal);
+}
+
+.nav-close {
+  z-index: calc(var(--z-modal) + 1);
+}
+
+/* Smooth scroll behavior (respecting user preferences) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .nav,
+  .nav-menu,
+  .footer,
+  .cta-section {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+}
+
