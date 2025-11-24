@@ -119,8 +119,15 @@
   <link rel="preload" href="/fonts-optimized/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts-optimized/cormorant-garamond-v21-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Stylesheets -->  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/styles.min.css">
+
+  <!-- Prevent default anchor scroll - must run in head before body loads -->
+  <script>
+    if (window.location.hash && 'scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  </script>
 
   <!-- Organization Relationship Schema -->
   <script type="application/ld+json">

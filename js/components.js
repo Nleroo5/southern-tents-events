@@ -412,6 +412,87 @@ function initScrollAnimations() {
   animatedElements.forEach(el => observer.observe(el));
 }
 
+// Services page anchor scrolling with header offset
+function initServicesAnchorScroll() {
+  // Only run on services page
+  if (!document.body.classList.contains('services')) return;
+
+  // Get header height based on viewport
+  function getHeaderHeight() {
+    const width = window.innerWidth;
+    if (width < 481) return 161;  // Mobile
+    if (width < 768) return 181;  // Tablet
+    return 211;  // Desktop
+  }
+
+  // Scroll to H2 element within section with offset
+  function scrollToSection(sectionId, useSmooth = false) {
+    const section = document.querySelector(sectionId);
+    if (!section) return;
+
+    // Find the H2 within the section
+    const h2 = section.querySelector('h2');
+    if (!h2) return;
+
+    const headerHeight = getHeaderHeight();
+
+    // Get current scroll position
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Get H2 position relative to viewport
+    const h2Rect = h2.getBoundingClientRect();
+
+    // Calculate absolute position of H2 from document top
+    const absoluteH2Top = currentScroll + h2Rect.top;
+
+    // Final scroll position: H2 top minus header height
+    const finalScrollPosition = absoluteH2Top - headerHeight;
+
+    window.scrollTo({
+      top: finalScrollPosition,
+      behavior: useSmooth ? 'smooth' : 'instant'
+    });
+  }
+
+  // Handle page load with hash - override browser's default scroll
+  if (window.location.hash) {
+    // Prevent default anchor scroll
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Force scroll to top immediately when script runs
+    window.scrollTo(0, 0);
+
+    // Use requestAnimationFrame to ensure DOM is ready and scroll to correct position
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToSection(window.location.hash);
+      });
+    });
+  }
+
+  // Handle anchor link clicks
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+    if (href === '#') return;
+
+    e.preventDefault();
+    scrollToSection(href, true); // Use smooth scroll for clicks
+    history.pushState(null, null, href);
+  });
+
+  // Handle hash changes (for direct URL changes or back/forward navigation)
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash) {
+      scrollToSection(window.location.hash);
+    }
+  });
+}
+
 // Export for use in main.js
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
@@ -421,6 +502,7 @@ if (typeof module !== 'undefined' && module.exports) {
     initFormValidation,
     showAlert,
     initGallery,
-    initScrollAnimations
+    initScrollAnimations,
+    initServicesAnchorScroll
   };
 }
