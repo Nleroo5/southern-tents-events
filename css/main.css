@@ -292,8 +292,6 @@ section[id] {
   background: transparent;
   border: none;
   cursor: pointer;
-  position: relative;
-  z-index: calc(var(--z-sticky) + 1);
 }
 
 .nav-toggle-bar {
@@ -699,11 +697,6 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   height: 48px;
   color: var(--color-secondary);
   transition: all var(--transition-base);
-}
-
-/* Tent images - rounded corners */
-#tents .rustic-card img {
-  border-radius: var(--radius-xl);
 }
 
 /* Wood Grain Design Options - Subtle Sketch Style */
