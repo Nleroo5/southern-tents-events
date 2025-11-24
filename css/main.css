@@ -958,7 +958,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   }
 }
 
-/* Mobile only - reduce Meet Perla card size */
+/* Mobile only - reduce Meet Perla card size and show photo above text */
 @media (max-width: 768px) {
   #about .rustic-card {
     padding: var(--space-4) var(--space-3) !important;
@@ -966,8 +966,19 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   }
 
   #about .rustic-card > div:first-of-type {
+    display: flex !important;
+    flex-direction: column !important;
     gap: var(--space-4) !important;
     margin-bottom: var(--space-4) !important;
+  }
+
+  /* Photo first, text second on mobile */
+  #about .rustic-card > div:first-of-type > div:first-child {
+    order: 2;
+  }
+
+  #about .rustic-card > div:first-of-type > div:last-child {
+    order: 1;
   }
 }
 
