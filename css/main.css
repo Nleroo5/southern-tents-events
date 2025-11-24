@@ -183,6 +183,11 @@ body.contact .hero {
   gap: var(--space-8);
 }
 
+/* Hide close button on desktop */
+.nav-close {
+  display: none;
+}
+
 .nav-link {
   font-family: var(--font-nav);
   font-size: 18px;
