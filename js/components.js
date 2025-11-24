@@ -471,11 +471,13 @@ function initServicesAnchorScroll() {
       history.scrollRestoration = 'manual';
     }
 
-    // Wait for page to fully load, then correct the scroll position
-    // Don't scroll to 0 first - just correct from wherever we are
+    // Scroll to top first to reset, then scroll to correct position
+    window.scrollTo(0, 0);
+
+    // Wait for page to fully load and images to render, then scroll
     setTimeout(() => {
       scrollToSection(window.location.hash, false);
-    }, 100);
+    }, 500);
   }
 
   // Handle anchor link clicks
