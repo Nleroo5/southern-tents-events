@@ -356,35 +356,73 @@
       <div class="contact-modal-content">
         <button class="contact-modal-close" aria-label="Close">&times;</button>
 
-        <div style="text-align: center; padding: 40px 30px;">
-          <h2 style="font-family: var(--font-accent); font-size: var(--text-5xl); color: var(--color-olive); margin-bottom: var(--space-6);">Get In Touch</h2>
+        <!-- Header Section -->
+        <div class="modal-header">
+          <h2 class="modal-title">Let's Connect</h2>
+          <p class="modal-subtitle">We're here to make your event unforgettable</p>
+        </div>
 
-          <div style="margin-bottom: var(--space-8);">
-            <div style="display: inline-block; width: 80px; height: 80px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-              <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
-                <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"></path>
-                <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"></path>
+        <!-- Contact Cards -->
+        <div class="modal-body">
+          <!-- Phone Card -->
+          <a href="tel:770-328-2920" class="contact-card phone-card">
+            <div class="contact-icon-wrapper">
+              <div class="contact-icon phone-icon">
+                <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                  <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"></path>
+                  <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Call Us</div>
+              <div class="contact-value phone-value">770-328-2920</div>
+              <div class="contact-subtext">Available 7 days a week</div>
+            </div>
+            <div class="contact-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
               </svg>
             </div>
-            <h3 style="font-size: var(--text-2xl); color: var(--color-gray-800); margin-bottom: var(--space-2); font-weight: var(--font-semibold);">Phone</h3>
-            <a href="tel:770-328-2920" style="font-size: var(--text-3xl); color: var(--color-primary); text-decoration: none; font-weight: var(--font-bold); display: block;">770-328-2920</a>
-            <p style="color: var(--color-gray-600); margin-top: var(--space-2);">Call us anytime!</p>
-          </div>
+          </a>
 
-          <div style="margin-bottom: var(--space-8);">
-            <div style="display: inline-block; width: 80px; height: 80px; background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-              <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
-                <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+          <!-- Email Card -->
+          <a href="mailto:Southerntentsevents@gmail.com" class="contact-card email-card">
+            <div class="contact-icon-wrapper">
+              <div class="contact-icon email-icon">
+                <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Email Us</div>
+              <div class="contact-value email-value">Southerntentsevents@gmail.com</div>
+              <div class="contact-subtext">Response within 48 hours</div>
+            </div>
+            <div class="contact-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
               </svg>
             </div>
-            <h3 style="font-size: var(--text-2xl); color: var(--color-gray-800); margin-bottom: var(--space-2); font-weight: var(--font-semibold);">Email</h3>
-            <a href="mailto:Southerntentsevents@gmail.com" style="font-size: var(--text-xl); color: var(--color-primary); text-decoration: none; font-weight: var(--font-semibold); display: block;">Southerntentsevents@gmail.com</a>
-            <p style="color: var(--color-gray-600); margin-top: var(--space-2);">We'll respond within 48 hours</p>
+          </a>
+
+          <!-- Divider -->
+          <div class="modal-divider">
+            <span>or</span>
           </div>
 
-          <div>
-            <a href="/contact.html" class="btn btn-primary btn-lg" style="background-color: var(--color-olive); border: none;">Request a Quote</a>
-          </div>
+          <!-- Quote Button -->
+          <a href="/contact.html" class="modal-quote-btn">
+            <svg width="24" height="24" fill="white" viewBox="0 0 24 24" style="margin-right: 12px;">
+              <path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM5 19V5h14l.002 14H5z"></path>
+              <path d="m13.293 6.293-5 5 5 5 1.414-1.414L11.414 11.5l3.293-3.293z"></path>
+            </svg>
+            Get a Custom Quote
+            <svg width="24" height="24" fill="white" viewBox="0 0 24 24" style="margin-left: 12px;">
+              <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -407,27 +445,33 @@
       .contact-modal-backdrop {
         position: absolute;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+        background-color: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
 
       .contact-modal-content {
         position: relative;
-        background-color: var(--color-white);
-        border-radius: var(--radius-xl);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+        border-radius: 24px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
         max-width: 600px;
         width: 100%;
         max-height: 90vh;
-        overflow-y: auto;
-        animation: modalSlideIn 0.3s ease-out;
+        overflow: hidden;
+        animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       @keyframes modalSlideIn {
         from {
           opacity: 0;
-          transform: translateY(-30px) scale(0.95);
+          transform: translateY(-40px) scale(0.9);
         }
         to {
           opacity: 1;
@@ -439,29 +483,290 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(255, 255, 255, 0.9);
         border: none;
         font-size: 28px;
         color: var(--color-gray-700);
         cursor: pointer;
-        transition: all var(--transition-base);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         justify-content: center;
         line-height: 1;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .contact-modal-close:hover {
-        background-color: rgba(0, 0, 0, 0.2);
-        transform: rotate(90deg);
+        background-color: var(--color-primary);
+        color: white;
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 6px 20px rgba(201, 168, 106, 0.4);
+      }
+
+      .modal-header {
+        padding: 50px 40px 30px;
+        text-align: center;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .modal-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+      }
+
+      .modal-title {
+        font-family: var(--font-accent);
+        font-size: 42px;
+        color: white;
+        margin: 0 0 12px 0;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+      }
+
+      .modal-subtitle {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .modal-body {
+        padding: 40px;
+        overflow-y: auto;
+        max-height: calc(90vh - 180px);
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 24px;
+        background: white;
+        border-radius: 16px;
+        border: 2px solid transparent;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 0%, rgba(201, 168, 106, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        border-color: var(--color-primary);
+      }
+
+      .contact-card:hover::before {
+        opacity: 1;
+      }
+
+      .contact-card:active {
+        transform: translateY(-2px);
+      }
+
+      .contact-icon-wrapper {
+        flex-shrink: 0;
+      }
+
+      .contact-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .phone-icon {
+        background: linear-gradient(135deg, #c9a86a 0%, #e8c588 100%);
+      }
+
+      .email-icon {
+        background: linear-gradient(135deg, #8b6f47 0%, #a68968 100%);
+      }
+
+      .contact-card:hover .contact-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .contact-details {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .contact-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
+
+      .contact-value {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--color-gray-900);
+        margin-bottom: 4px;
+        word-break: break-word;
+      }
+
+      .phone-value {
+        font-size: 26px;
+        color: var(--color-primary);
+      }
+
+      .email-value {
+        font-size: 16px;
+        color: var(--color-secondary);
+      }
+
+      .contact-subtext {
+        font-size: 14px;
+        color: var(--color-gray-500);
+      }
+
+      .contact-arrow {
+        flex-shrink: 0;
+        color: var(--color-primary);
+        transition: transform 0.3s ease;
+        opacity: 0.6;
+      }
+
+      .contact-card:hover .contact-arrow {
+        transform: translateX(4px);
+        opacity: 1;
+      }
+
+      .modal-divider {
+        position: relative;
+        text-align: center;
+        margin: 32px 0;
+      }
+
+      .modal-divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--color-gray-300), transparent);
+      }
+
+      .modal-divider span {
+        position: relative;
+        background: #fafafa;
+        padding: 0 20px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-gray-500);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .modal-quote-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 20px 32px;
+        background: linear-gradient(135deg, var(--color-olive) 0%, #6b7030 100%);
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(93, 98, 42, 0.3);
+        border: none;
+      }
+
+      .modal-quote-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(93, 98, 42, 0.4);
+        background: linear-gradient(135deg, #6b7030 0%, var(--color-olive) 100%);
+      }
+
+      .modal-quote-btn:active {
+        transform: translateY(-1px);
       }
 
       @media (max-width: 640px) {
         .contact-modal-content {
           margin: var(--space-4);
+          border-radius: 20px;
+        }
+
+        .modal-header {
+          padding: 40px 24px 24px;
+        }
+
+        .modal-title {
+          font-size: 32px;
+        }
+
+        .modal-subtitle {
+          font-size: 16px;
+        }
+
+        .modal-body {
+          padding: 24px;
+        }
+
+        .contact-card {
+          padding: 20px;
+          gap: 16px;
+        }
+
+        .contact-icon {
+          width: 56px;
+          height: 56px;
+        }
+
+        .contact-icon svg {
+          width: 28px;
+          height: 28px;
+        }
+
+        .phone-value {
+          font-size: 22px;
+        }
+
+        .email-value {
+          font-size: 14px;
+        }
+
+        .modal-quote-btn {
+          font-size: 16px;
+          padding: 18px 24px;
         }
       }
     </style>

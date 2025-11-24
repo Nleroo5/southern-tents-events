@@ -87,7 +87,6 @@ function generateEmailHTML(formData, itemsData) {
 
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #c9a86a 0%, #ddbf8a 100%); padding: 40px 30px; text-align: center;">
-          <img src="https://southerntentsandevents.com/images/logo-white.png" alt="Southern Tents & Events Logo" style="max-width: 200px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
           <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700;">New Quote Request</h1>
           <p style="margin: 10px 0 0 0; color: #faf8f3; font-size: 16px;">Southern Tents & Events</p>
         </div>
