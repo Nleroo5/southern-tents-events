@@ -435,25 +435,24 @@ function initServicesAnchorScroll() {
     if (!h2) return;
 
     const headerHeight = getHeaderHeight();
+    const isMobile = window.innerWidth <= 768;
 
-    // Get current scroll position
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Get H2 position relative to viewport
-    const h2Rect = h2.getBoundingClientRect();
-
-    // Calculate absolute position of H2 from document top
-    const absoluteH2Top = currentScroll + h2Rect.top;
+    // Use offsetTop for absolute position from document top
+    let absoluteH2Top = 0;
+    let element = h2;
+    while (element) {
+      absoluteH2Top += element.offsetTop;
+      element = element.offsetParent;
+    }
 
     // Manual adjustments for furniture and lighting sections
     // Different adjustments for mobile vs desktop
     let adjustment = 0;
-    const isMobile = window.innerWidth <= 768;
 
     if (sectionId === '#furniture') {
-      adjustment = isMobile ? -300 : 150; // Mobile: negative to scroll up from calculated position
+      adjustment = isMobile ? -300 : 150;
     } else if (sectionId === '#lighting') {
-      adjustment = isMobile ? -300 : 200; // Mobile: negative to scroll up from calculated position
+      adjustment = isMobile ? -300 : 200;
     }
 
     // Final scroll position: H2 top minus header height plus adjustments
