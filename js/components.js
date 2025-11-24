@@ -413,20 +413,42 @@ function initScrollAnimations() {
 }
 
 // Services page anchor scrolling with header offset
-// Now handled by CSS scroll-margin-top for cleaner, more reliable behavior
+// Production-grade solution using getBoundingClientRect + window.scrollY
 function initServicesAnchorScroll() {
   // Only run on services page
   if (!document.body.classList.contains('services')) return;
 
-  // Simple function to scroll to section using native browser behavior
-  // CSS scroll-margin-top handles the offset automatically
-  function scrollToSection(sectionId, useSmooth = false) {
-    const section = document.querySelector(sectionId);
-    if (!section) return;
+  // Get header height based on viewport width
+  function getHeaderOffset() {
+    const width = window.innerWidth;
+    if (width < 481) return 161;  // Mobile
+    if (width < 768) return 181;  // Tablet
+    return 211;  // Desktop
+  }
 
-    section.scrollIntoView({
-      behavior: useSmooth ? 'smooth' : 'auto',
-      block: 'start'
+  // Production-grade scroll function
+  // Formula: element.getBoundingClientRect().top + window.scrollY - offset
+  function scrollToSection(sectionId, useSmooth = false) {
+    const target = document.querySelector(sectionId);
+    if (!target) return;
+
+    // Get element's current position relative to viewport
+    const elementPosition = target.getBoundingClientRect().top;
+
+    // Get current scroll position (window.scrollY is modern, not deprecated pageYOffset)
+    const currentScroll = window.scrollY;
+
+    // Get header offset
+    const headerOffset = getHeaderOffset();
+
+    // Calculate final scroll position
+    // Formula: current viewport position + current scroll - header offset
+    const targetPosition = elementPosition + currentScroll - headerOffset;
+
+    // Scroll to calculated position
+    window.scrollTo({
+      top: targetPosition,
+      behavior: useSmooth ? 'smooth' : 'auto'
     });
   }
 
@@ -438,9 +460,10 @@ function initServicesAnchorScroll() {
     }
 
     // Wait for page and images to fully load
+    // Longer timeout for mobile to ensure layout is settled
     setTimeout(() => {
       scrollToSection(window.location.hash, false);
-    }, 100);
+    }, 500);
   }
 
   // Handle anchor link clicks

@@ -2322,23 +2322,6 @@ picture img {
   position: relative;
 }
 
-/* Scroll margin for anchor links with fixed header */
-section[id] {
-  scroll-margin-top: 161px; /* Mobile header height */
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-  section[id] {
-    scroll-margin-top: 181px; /* Tablet header height */
-  }
-}
-
-@media (min-width: 768px) {
-  section[id] {
-    scroll-margin-top: 211px; /* Desktop header height */
-  }
-}
-
 @media (min-width: 1024px) {
   .section {
     padding-top: var(--space-20);
