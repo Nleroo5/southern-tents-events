@@ -366,7 +366,6 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
-    z-index: 9999;
   }
 
   .nav-menu {
