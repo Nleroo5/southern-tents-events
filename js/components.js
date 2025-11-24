@@ -450,9 +450,9 @@ function initServicesAnchorScroll() {
     let adjustment = 0;
 
     if (sectionId === '#furniture') {
-      adjustment = isMobile ? -300 : 150;
+      adjustment = isMobile ? 800 : 150;  // Large positive to scroll past dance-floors
     } else if (sectionId === '#lighting') {
-      adjustment = isMobile ? -300 : 200;
+      adjustment = isMobile ? 1100 : 200; // Large positive to scroll past furniture
     }
 
     // Final scroll position: H2 top minus header height plus adjustments
@@ -471,13 +471,10 @@ function initServicesAnchorScroll() {
       history.scrollRestoration = 'manual';
     }
 
-    // Scroll to top first to reset, then scroll to correct position
-    window.scrollTo(0, 0);
-
-    // Wait for page to fully load and images to render, then scroll
+    // Wait for page to fully load, then correct the scroll position
     setTimeout(() => {
       scrollToSection(window.location.hash, false);
-    }, 500);
+    }, 300);
   }
 
   // Handle anchor link clicks
