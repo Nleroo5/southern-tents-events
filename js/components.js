@@ -444,7 +444,7 @@ function initServicesAnchorScroll() {
     // Fine-tune adjustments for specific sections
     if (sectionId === '#lighting') {
       if (window.innerWidth > 768) {
-        headerOffset -= 80; // Desktop: scroll 80px more down for lighting
+        headerOffset += 40; // Desktop: scroll 40px less down for lighting
       } else {
         headerOffset -= 20; // Mobile: scroll 20px more down for lighting
       }
