@@ -852,13 +852,13 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   color: var(--color-olive);
   margin-bottom: var(--space-3);
   font-family: var(--font-heading);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-normal);
 }
 
 .feature-description {
   color: var(--color-gray-600);
   line-height: var(--leading-relaxed);
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-normal);
   font-size: var(--text-lg);
 }
 
