@@ -1900,6 +1900,7 @@ img[alt*="Perla"] {
   max-width: 100%;
   height: auto;
   width: 100%;
+  border-radius: var(--radius-xl);
 }
 
 /* Ensure all picture elements are responsive */
