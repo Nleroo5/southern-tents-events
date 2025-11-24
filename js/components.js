@@ -452,18 +452,22 @@ function initServicesAnchorScroll() {
     });
   }
 
-  // Handle page load with hash
+  // Handle page load with hash (from external pages)
   if (window.location.hash) {
     // Prevent default scroll restoration
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    // Wait for page and images to fully load
-    // Longer timeout for mobile to ensure layout is settled
+    // CRITICAL: Scroll to top first to get accurate position
+    // Browser may have already scrolled to anchor, giving wrong getBoundingClientRect
+    window.scrollTo(0, 0);
+
+    // Wait for page to fully load and layout to settle
+    // Delay is critical for external page navigation (Chrome requires this)
     setTimeout(() => {
       scrollToSection(window.location.hash, false);
-    }, 500);
+    }, 100);
   }
 
   // Handle anchor link clicks
