@@ -343,7 +343,7 @@ section[id] {
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: 1060;
+  z-index: var(--z-sticky); /* Same as header (1020) - below menu overlay (1050) */
   flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
