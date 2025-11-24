@@ -451,9 +451,9 @@ function initServicesAnchorScroll() {
     const isMobile = window.innerWidth <= 768;
 
     if (sectionId === '#furniture') {
-      adjustment = isMobile ? 300 : 150; // Mobile needs large positive adjustment to scroll down more
+      adjustment = isMobile ? 500 : 150; // Mobile needs much larger positive adjustment
     } else if (sectionId === '#lighting') {
-      adjustment = isMobile ? 500 : 200; // Mobile needs even larger positive adjustment
+      adjustment = isMobile ? 800 : 200; // Mobile needs massive positive adjustment
     }
 
     // Final scroll position: H2 top minus header height plus adjustments
