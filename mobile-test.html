@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Hero Test - DEFINITIVE</title>
+    <style>
+        /* INLINE CSS - NO EXTERNAL FILES - NO CACHING POSSIBLE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* DEFAULT DESKTOP - 70% */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background-image: url('/images/white-wedding-tent-rental-senoia-georgia.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* MOBILE OVERRIDE - 50% */
+        @media (max-width: 767px) {
+            .hero {
+                background-position: center 50% !important;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .diagnostic {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(201, 168, 106, 0.95);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            max-width: 300px;
+            z-index: 9999;
+        }
+
+        .diagnostic h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+
+        .diagnostic p {
+            margin: 5px 0;
+        }
+
+        .expected {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Mobile Position Test</h1>
+            <p>If screen &lt; 768px: You should see MIDDLE of tent (50%)</p>
+            <p>If screen ≥ 768px: You should see BOTTOM of tent (70%)</p>
+        </div>
+    </section>
+
+    <div class="diagnostic" id="diagnostic">
+        <h3>📊 Diagnostics</h3>
+        <p><strong>Screen Width:</strong> <span id="width"></span>px</p>
+        <p><strong>Expected Position:</strong> <span id="expected"></span></p>
+        <p><strong>Media Query Active:</strong> <span id="mq-status"></span></p>
+        <p class="expected">
+            <strong>What you should see:</strong><br>
+            <span id="what-to-see"></span>
+        </p>
+    </div>
+
+    <script>
+        function updateDiagnostics() {
+            const width = window.innerWidth;
+            const isMobile = width < 768;
+
+            document.getElementById('width').textContent = width;
+            document.getElementById('expected').textContent = isMobile ? 'center 50%' : 'center 70%';
+            document.getElementById('mq-status').textContent = isMobile ? '✅ YES (mobile)' : '❌ NO (desktop)';
+            document.getElementById('what-to-see').textContent = isMobile
+                ? 'MIDDLE of tent image (center of photo)'
+                : 'BOTTOM of tent image (ground/grass area)';
+
+            // Check actual computed style
+            const hero = document.querySelector('.hero');
+            const computed = window.getComputedStyle(hero);
+            const actualBgPos = computed.backgroundPosition;
+
+            // Add actual vs expected comparison
+            const comparison = document.createElement('p');
+            comparison.innerHTML = `<strong>Actual CSS:</strong><br>${actualBgPos}`;
+            comparison.style.marginTop = '10px';
+            comparison.style.paddingTop = '10px';
+            comparison.style.borderTop = '2px solid white';
+
+            const existingComparison = document.querySelector('.actual-css');
+            if (existingComparison) {
+                existingComparison.remove();
+            }
+            comparison.className = 'actual-css';
+            document.getElementById('diagnostic').appendChild(comparison);
+        }
+
+        updateDiagnostics();
+        window.addEventListener('resize', updateDiagnostics);
+
+        // Log to console for DevTools inspection
+        console.log('=== HERO POSITION TEST ===');
+        console.log('Window width:', window.innerWidth);
+        console.log('Expected:', window.innerWidth < 768 ? 'center 50%' : 'center 70%');
+        console.log('Media query active:', window.matchMedia('(max-width: 767px)').matches);
+    </script>
+</body>
+</html>

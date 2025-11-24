@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Position Test</title>
+    <link rel="stylesheet" href="/css/styles.min.css?v=1732410000">
+    <style>
+        body { margin: 0; }
+    </style>
+</head>
+<body class="home">
+    <!-- TEST HERO with inline style -->
+    <section class="hero" style="background-position: center 50% !important;">
+        <div class="hero-content">
+            <h1 class="hero-title">TEST - Should be at 50%</h1>
+            <p class="hero-subtitle">If you see this text clearly, the position is at 50%</p>
+        </div>
+    </section>
+
+    <div style="padding: 40px; background: white; text-align: center;">
+        <h2>Instructions:</h2>
+        <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li>Open DevTools (F12)</li>
+            <li>Inspect the hero section above</li>
+            <li>In Styles tab, you should see: <code>element.style { background-position: center 50% !important; }</code></li>
+            <li>The hero image should show the BOTTOM portion (50% = middle of image)</li>
+            <li>Your current screen width: <span id="width"></span>px</li>
+        </ol>
+    </div>
+
+    <script>
+        document.getElementById('width').textContent = window.innerWidth;
+    </script>
+</body>
+</html>

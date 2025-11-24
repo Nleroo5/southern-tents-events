@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE DIAGNOSTIC - Hero Position Debug</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: monospace;
+            background: #000;
+            color: #0f0;
+        }
+        .diagnostic {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.95);
+            padding: 20px;
+            z-index: 99999;
+            border-bottom: 3px solid #0f0;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #0f0;
+            background: #111;
+        }
+        .error { border-left-color: #f00; color: #f00; }
+        .success { border-left-color: #0f0; color: #0f0; }
+        .warning { border-left-color: #ff0; color: #ff0; }
+        h2 { color: #0ff; margin-top: 20px; }
+        code { background: #222; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <div class="diagnostic" id="results">
+        <h1>🔬 LIVE DIAGNOSTIC RUNNING...</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(message, type = 'test-result') {
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = message;
+            output.appendChild(div);
+        }
+
+        async function runDiagnostics() {
+            log('<h2>1️⃣ FETCHING CSS FILE</h2>');
+            
+            try {
+                const response = await fetch('http://localhost:3000/css/styles.min.css');
+                const cssText = await response.text();
+                
+                log(`✅ CSS File Size: ${cssText.length} bytes`, 'success');
+                
+                // Check for mobile media query
+                const mobileRegex = /@media \(max-width:767px\)\{\.hero\{background-position:center 50%!important\}\}/;
+                const hasMobile = mobileRegex.test(cssText);
+                
+                if (hasMobile) {
+                    log('✅ FOUND: Mobile media query (max-width:767px) with center 50%!important', 'success');
+                } else {
+                    log('❌ MISSING: Mobile media query NOT FOUND in CSS!', 'error');
+                }
+                
+                // Check for desktop media query
+                const desktopRegex = /@media \(min-width:768px\)\{\.hero\{background-position:center 70%!important\}\}/;
+                const hasDesktop = desktopRegex.test(cssText);
+                
+                if (hasDesktop) {
+                    log('✅ FOUND: Desktop media query (min-width:768px) with center 70%!important', 'success');
+                } else {
+                    log('❌ MISSING: Desktop media query NOT FOUND in CSS!', 'error');
+                }
+                
+                // Extract all hero background-position rules
+                log('<h2>2️⃣ ALL HERO BACKGROUND-POSITION RULES IN CSS:</h2>');
+                const heroPositions = cssText.match(/\.hero\{[^}]*background-position:[^}]*\}/g) || [];
+                heroPositions.forEach((rule, i) => {
+                    log(`Rule ${i+1}: <code>${rule}</code>`);
+                });
+                
+            } catch (error) {
+                log(`❌ ERROR FETCHING CSS: ${error.message}`, 'error');
+            }
+            
+            log('<h2>3️⃣ CHECKING INDEX.HTML</h2>');
+            
+            try {
+                const htmlResponse = await fetch('http://localhost:3000/');
+                const htmlText = await htmlResponse.text();
+                
+                // Check for inline styles
+                const inlineStyleRegex = /<section[^>]*class="hero"[^>]*style="([^"]*)"/;
+                const inlineMatch = htmlText.match(inlineStyleRegex);
+                
+                if (inlineMatch) {
+                    log(`⚠️ WARNING: Inline style found on hero section: <code>${inlineMatch[1]}</code>`, 'warning');
+                } else {
+                    log('✅ NO inline styles on hero section', 'success');
+                }
+                
+                // Check CSS link
+                const cssLinkRegex = /<link rel="stylesheet" href="([^"]*styles\.min\.css[^"]*)"/;
+                const cssMatch = htmlText.match(cssLinkRegex);
+                
+                if (cssMatch) {
+                    log(`CSS Link: <code>${cssMatch[1]}</code>`);
+                } else {
+                    log('❌ ERROR: Cannot find styles.min.css link!', 'error');
+                }
+                
+            } catch (error) {
+                log(`❌ ERROR FETCHING HTML: ${error.message}`, 'error');
+            }
+            
+            log('<h2>4️⃣ CURRENT BROWSER STATE</h2>');
+            log(`Viewport Width: <strong>${window.innerWidth}px</strong>`);
+            log(`Viewport Height: <strong>${window.innerHeight}px</strong>`);
+            log(`Device Pixel Ratio: <strong>${window.devicePixelRatio}</strong>`);
+            log(`User Agent: <code>${navigator.userAgent}</code>`);
+            
+            log('<h2>5️⃣ MEDIA QUERY MATCHING</h2>');
+            
+            const queries = [
+                { name: 'Mobile (max-width: 767px)', query: '(max-width: 767px)' },
+                { name: 'Desktop (min-width: 768px)', query: '(min-width: 768px)' },
+                { name: 'Max-width: 375px', query: '(max-width: 375px)' },
+                { name: 'Min-width: 376px AND max-width: 640px', query: '(min-width: 376px) and (max-width: 640px)' }
+            ];
+            
+            queries.forEach(({ name, query }) => {
+                const matches = window.matchMedia(query).matches;
+                if (matches) {
+                    log(`✅ ${name}: <strong>MATCHES</strong>`, 'success');
+                } else {
+                    log(`❌ ${name}: does not match`, 'test-result');
+                }
+            });
+            
+            log('<h2>6️⃣ LOADING REAL PAGE TO TEST</h2>');
+            log('Creating iframe to load actual homepage...', 'warning');
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = 'http://localhost:3000/';
+            iframe.style.cssText = 'position:fixed; bottom:0; left:0; width:400px; height:300px; border:3px solid #0ff; z-index:99998;';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = () => {
+                setTimeout(() => {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const hero = iframeDoc.querySelector('.hero');
+                        
+                        if (hero) {
+                            const computed = iframe.contentWindow.getComputedStyle(hero);
+                            const bgPos = computed.backgroundPosition;
+                            const bgImage = computed.backgroundImage;
+                            const bgSize = computed.backgroundSize;
+                            
+                            log('<h2>7️⃣ COMPUTED STYLES FROM ACTUAL PAGE</h2>');
+                            log(`Background Position: <strong>${bgPos}</strong>`, bgPos.includes('50%') ? 'success' : 'error');
+                            log(`Background Size: <code>${bgSize}</code>`);
+                            log(`Background Image: <code>${bgImage.substring(0, 100)}...</code>`);
+                            
+                            // Check if inline style exists
+                            const inlineStyle = hero.getAttribute('style');
+                            if (inlineStyle) {
+                                log(`⚠️ Inline style attribute: <code>${inlineStyle}</code>`, 'warning');
+                            } else {
+                                log('✅ No inline style attribute on hero element', 'success');
+                            }
+                            
+                            log('<h2>8️⃣ FINAL DIAGNOSIS</h2>');
+                            
+                            const expectedMobile = window.innerWidth < 768 ? '50%' : '70%';
+                            if (bgPos.includes(expectedMobile)) {
+                                log(`🎉 <strong>SUCCESS!</strong> Background position is correct: ${bgPos}`, 'success');
+                            } else {
+                                log(`❌ <strong>FAILURE!</strong> Expected ${expectedMobile} in position, but got: ${bgPos}`, 'error');
+                                log('<h2>🔍 TROUBLESHOOTING STEPS:</h2>', 'warning');
+                                log('1. Hard refresh the page: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)');
+                                log('2. Clear browser cache completely');
+                                log('3. Try in Incognito/Private mode');
+                                log('4. Check if a different CSS file is being loaded');
+                            }
+                            
+                        } else {
+                            log('❌ ERROR: Cannot find .hero element in loaded page!', 'error');
+                        }
+                    } catch (error) {
+                        log(`❌ ERROR accessing iframe: ${error.message}`, 'error');
+                    }
+                }, 1000);
+            };
+        }
+        
+        runDiagnostics();
+    </script>
+</body>
+</html>

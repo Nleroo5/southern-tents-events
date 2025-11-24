@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Dimension Analysis</title>
+    <style>
+        body { 
+            margin: 0; 
+            font-family: monospace; 
+            background: #000; 
+            color: #0f0; 
+            padding: 20px;
+        }
+        .info { 
+            background: #111; 
+            padding: 20px; 
+            margin: 10px 0;
+            border: 2px solid #0f0;
+        }
+        .error { border-color: #f00; color: #f00; }
+        .success { border-color: #0f0; color: #0f0; }
+        .warning { border-color: #ff0; color: #ff0; }
+        img { 
+            max-width: 100%; 
+            border: 3px solid #0ff;
+            margin: 20px 0;
+        }
+        .test-container {
+            width: 375px;
+            height: 667px;
+            border: 3px solid #f0f;
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .bg-test {
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/white-wedding-tent-rental-senoia-georgia.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .pos-10 { background-position: center 10%; }
+        .pos-35 { background-position: center 35%; }
+        .pos-50 { background-position: center 50%; }
+        .pos-70 { background-position: center 70%; }
+    </style>
+</head>
+<body>
+    <h1>🔬 IMAGE DIMENSION & POSITION ANALYSIS</h1>
+    
+    <div id="analysis"></div>
+    
+    <h2>VISUAL COMPARISON (375px × 667px viewport)</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, 375px); gap: 20px;">
+        <div>
+            <h3>10% Position</h3>
+            <div class="test-container"><div class="bg-test pos-10"></div></div>
+        </div>
+        <div>
+            <h3>35% Position</h3>
+            <div class="test-container"><div class="bg-test pos-35"></div></div>
+        </div>
+        <div>
+            <h3>50% Position</h3>
+            <div class="test-container"><div class="bg-test pos-50"></div></div>
+        </div>
+        <div>
+            <h3>70% Position</h3>
+            <div class="test-container"><div class="bg-test pos-70"></div></div>
+        </div>
+    </div>
+    
+    <script>
+        const img = new Image();
+        img.src = '/images/white-wedding-tent-rental-senoia-georgia.jpg';
+        
+        img.onload = function() {
+            const analysis = document.getElementById('analysis');
+            
+            const imageWidth = img.naturalWidth;
+            const imageHeight = img.naturalHeight;
+            const imageAspect = imageWidth / imageHeight;
+            
+            // Mobile viewport (iPhone 15 Pro)
+            const mobileWidth = 393;
+            const mobileHeight = 852;
+            const mobileAspect = mobileWidth / mobileHeight;
+            
+            // Desktop viewport
+            const desktopWidth = 1920;
+            const desktopHeight = 1080;
+            const desktopAspect = desktopWidth / desktopHeight;
+            
+            let html = `
+                <div class="info success">
+                    <h2>📸 IMAGE DIMENSIONS</h2>
+                    <strong>Original Image:</strong><br>
+                    Width: ${imageWidth}px<br>
+                    Height: ${imageHeight}px<br>
+                    Aspect Ratio: ${imageAspect.toFixed(2)} (${imageWidth}:${imageHeight})<br>
+                    Orientation: ${imageWidth > imageHeight ? 'LANDSCAPE' : 'PORTRAIT'}
+                </div>
+            `;
+            
+            // Mobile analysis
+            const mobileCoverWidth = mobileWidth;
+            const mobileCoverHeight = mobileCoverWidth / imageAspect;
+            const mobileExtraSpace = mobileCoverHeight - mobileHeight;
+            const mobileVerticalMovement = mobileExtraSpace;
+            
+            html += `
+                <div class="info ${mobileVerticalMovement > 50 ? 'success' : 'error'}">
+                    <h2>📱 MOBILE (${mobileWidth}×${mobileHeight}px)</h2>
+                    <strong>Background-size: cover calculation:</strong><br>
+                    Cover Width: ${mobileCoverWidth}px (matches viewport)<br>
+                    Cover Height: ${mobileCoverHeight.toFixed(0)}px<br>
+                    Viewport Height: ${mobileHeight}px<br>
+                    <br>
+                    <strong>EXTRA VERTICAL SPACE: ${mobileExtraSpace.toFixed(0)}px</strong><br>
+                    <strong>MOVEMENT RANGE: ${mobileVerticalMovement.toFixed(0)}px</strong><br>
+                    <br>
+                    ${mobileExtraSpace < 100 
+                        ? '❌ <span class="error">PROBLEM: Image is too tall! Very little room to reposition.<br>Changing from 50% to 35% only moves image ' + (mobileExtraSpace * 0.15).toFixed(0) + 'px</span>'
+                        : '✅ Image has enough space for repositioning'}
+                </div>
+            `;
+            
+            // Desktop analysis
+            const desktopCoverHeight = desktopHeight;
+            const desktopCoverWidth = desktopCoverHeight * imageAspect;
+            const desktopExtraSpace = desktopCoverWidth - desktopWidth;
+            
+            html += `
+                <div class="info success">
+                    <h2>🖥️ DESKTOP (${desktopWidth}×${desktopHeight}px)</h2>
+                    <strong>Background-size: cover calculation:</strong><br>
+                    Cover Height: ${desktopCoverHeight}px (matches viewport)<br>
+                    Cover Width: ${desktopCoverWidth.toFixed(0)}px<br>
+                    Viewport Width: ${desktopWidth}px<br>
+                    <br>
+                    <strong>EXTRA HORIZONTAL SPACE: ${desktopExtraSpace.toFixed(0)}px</strong><br>
+                    ✅ Desktop has ${desktopExtraSpace > 0 ? 'plenty' : 'limited'} horizontal movement
+                </div>
+            `;
+            
+            // Solution
+            if (mobileExtraSpace < 100) {
+                html += `
+                    <div class="info warning">
+                        <h2>💡 SOLUTION</h2>
+                        <strong>The image aspect ratio is wrong for mobile portrait!</strong><br><br>
+                        
+                        <strong>Option 1: Use a mobile-specific image</strong><br>
+                        Create a square or portrait-oriented crop of the image for mobile<br>
+                        Recommended dimensions: 800×1200px or 1000×1500px<br><br>
+                        
+                        <strong>Option 2: Reduce mobile hero height</strong><br>
+                        Instead of 100vh, use 60vh on mobile<br>
+                        This gives more vertical space in the image to reposition<br><br>
+                        
+                        <strong>Option 3: Change background-size on mobile</strong><br>
+                        Use: background-size: auto 100% (width-based instead of cover)<br>
+                        Or: background-size: 120% auto (zoom in to create vertical space)
+                    </div>
+                `;
+            }
+            
+            analysis.innerHTML = html;
+        };
+        
+        img.onerror = function() {
+            document.getElementById('analysis').innerHTML = `
+                <div class="info error">
+                    <h2>❌ ERROR</h2>
+                    Cannot load image: /images/white-wedding-tent-rental-senoia-georgia.jpg
+                </div>
+            `;
+        };
+    </script>
+</body>
+</html>

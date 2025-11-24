@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Buster Test - Hero Position</title>
+    <link rel="stylesheet" href="/css/styles.min.css?nocache=123456789">
+    <style>
+        body { margin: 0; font-family: Arial; }
+        .info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: #0f0;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 9999;
+            border: 2px solid #0f0;
+        }
+    </style>
+</head>
+<body class="home">
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">CACHE BUSTER TEST</h1>
+            <p class="hero-subtitle">Testing with fresh CSS load</p>
+        </div>
+    </section>
+    
+    <div class="info" id="info"></div>
+    
+    <script>
+        const hero = document.querySelector('.hero');
+        const computed = window.getComputedStyle(hero);
+        const info = document.getElementById('info');
+        
+        info.innerHTML = `
+            <strong>LIVE TEST RESULTS:</strong><br><br>
+            Viewport: ${window.innerWidth}px<br>
+            BG Position: <strong>${computed.backgroundPosition}</strong><br>
+            Expected: ${window.innerWidth < 768 ? 'center 50%' : 'center 70%'}<br>
+            Match: ${computed.backgroundPosition.includes(window.innerWidth < 768 ? '50%' : '70%') ? '✅ YES' : '❌ NO'}<br><br>
+            Mobile MQ Active: ${window.matchMedia('(max-width: 767px)').matches ? '✅' : '❌'}
+        `;
+    </script>
+</body>
+</html>

@@ -7,33 +7,57 @@
 function initMobileNav() {
   const navToggle = document.querySelector('.nav-toggle');
   const navMenu = document.querySelector('.nav-menu');
+  const navClose = document.querySelector('.nav-close');
   const navLinks = document.querySelectorAll('.nav-link');
+  const navMenuList = document.querySelector('.nav-menu-list');
 
   if (!navToggle || !navMenu) return;
 
+  // Open menu
   navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
 
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    // Update aria-expanded
+    const isExpanded = navMenu.classList.contains('active');
+    navToggle.setAttribute('aria-expanded', isExpanded);
   });
+
+  // Close menu function
+  const closeMenu = () => {
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  // Close button click
+  if (navClose) {
+    navClose.addEventListener('click', closeMenu);
+  }
 
   // Close menu when clicking a link
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
   });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-      navToggle.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = '';
+  // Close menu when clicking backdrop (outside menu list)
+  navMenu.addEventListener('click', (e) => {
+    if (e.target === navMenu) {
+      closeMenu();
+    }
+  });
+
+  // Prevent clicks inside menu list from closing
+  if (navMenuList) {
+    navMenuList.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      closeMenu();
     }
   });
 }
