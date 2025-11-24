@@ -439,7 +439,12 @@ function initServicesAnchorScroll() {
     const currentScroll = window.scrollY;
 
     // Get header offset
-    const headerOffset = getHeaderOffset();
+    let headerOffset = getHeaderOffset();
+
+    // Fine-tune adjustment for lighting section on mobile
+    if (sectionId === '#lighting' && window.innerWidth <= 768) {
+      headerOffset -= 20; // Scroll 20px more down for lighting on mobile
+    }
 
     // Calculate final scroll position
     // Formula: current viewport position + current scroll - header offset
