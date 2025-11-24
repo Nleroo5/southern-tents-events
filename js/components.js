@@ -413,68 +413,34 @@ function initScrollAnimations() {
 }
 
 // Services page anchor scrolling with header offset
+// Now handled by CSS scroll-margin-top for cleaner, more reliable behavior
 function initServicesAnchorScroll() {
   // Only run on services page
   if (!document.body.classList.contains('services')) return;
 
-  // Get header height based on viewport
-  function getHeaderHeight() {
-    const width = window.innerWidth;
-    if (width < 481) return 161;  // Mobile
-    if (width < 768) return 181;  // Tablet
-    return 211;  // Desktop
-  }
-
-  // Scroll to H2 element within section with offset
+  // Simple function to scroll to section using native browser behavior
+  // CSS scroll-margin-top handles the offset automatically
   function scrollToSection(sectionId, useSmooth = false) {
     const section = document.querySelector(sectionId);
     if (!section) return;
 
-    // Find the H2 within the section
-    const h2 = section.querySelector('h2');
-    if (!h2) return;
-
-    const headerHeight = getHeaderHeight();
-    const isMobile = window.innerWidth <= 768;
-
-    // Use offsetTop for absolute position from document top
-    let absoluteH2Top = 0;
-    let element = h2;
-    while (element) {
-      absoluteH2Top += element.offsetTop;
-      element = element.offsetParent;
-    }
-
-    // Manual adjustments for furniture and lighting sections
-    // Different adjustments for mobile vs desktop
-    let adjustment = 0;
-
-    if (sectionId === '#furniture') {
-      adjustment = isMobile ? 1900 : 150;  // Increase from 1100 - need to skip past dance-floors
-    } else if (sectionId === '#lighting') {
-      adjustment = isMobile ? 2200 : 200; // Increase from 1100 - need to skip past furniture
-    }
-
-    // Final scroll position: H2 top minus header height plus adjustments
-    const finalScrollPosition = absoluteH2Top - headerHeight + adjustment;
-
-    window.scrollTo({
-      top: finalScrollPosition,
-      behavior: useSmooth ? 'smooth' : 'instant'
+    section.scrollIntoView({
+      behavior: useSmooth ? 'smooth' : 'auto',
+      block: 'start'
     });
   }
 
-  // Handle page load with hash - correct the browser's default scroll
+  // Handle page load with hash
   if (window.location.hash) {
-    // Prevent default anchor scroll restoration on future navigations
+    // Prevent default scroll restoration
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    // Wait for page to fully load, then correct the scroll position
+    // Wait for page and images to fully load
     setTimeout(() => {
       scrollToSection(window.location.hash, false);
-    }, 300);
+    }, 100);
   }
 
   // Handle anchor link clicks
@@ -490,10 +456,10 @@ function initServicesAnchorScroll() {
     history.pushState(null, null, href);
   });
 
-  // Handle hash changes (for direct URL changes or back/forward navigation)
+  // Handle hash changes (for back/forward navigation)
   window.addEventListener('hashchange', () => {
     if (window.location.hash) {
-      scrollToSection(window.location.hash);
+      scrollToSection(window.location.hash, true);
     }
   });
 }
