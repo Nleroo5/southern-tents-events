@@ -346,9 +346,156 @@
         <p class="cta-description" style="color: var(--color-black);">
           Our team is here to help! Contact us and we'll answer any questions you have.
         </p>
-        <a href="/contact.html" class="btn btn-primary btn-lg" style="background-color: var(--color-white); color: var(--color-accent);">Contact Us</a>
+        <button id="faq-contact-btn" class="btn btn-primary btn-lg" style="background-color: var(--color-white); color: var(--color-accent); border: none; cursor: pointer;">Contact Us</button>
       </div>
     </section>
+
+    <!-- Contact Info Modal -->
+    <div id="contact-modal" class="contact-modal">
+      <div class="contact-modal-backdrop"></div>
+      <div class="contact-modal-content">
+        <button class="contact-modal-close" aria-label="Close">&times;</button>
+
+        <div style="text-align: center; padding: 40px 30px;">
+          <h2 style="font-family: var(--font-accent); font-size: var(--text-5xl); color: var(--color-olive); margin-bottom: var(--space-6);">Get In Touch</h2>
+
+          <div style="margin-bottom: var(--space-8);">
+            <div style="display: inline-block; width: 80px; height: 80px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+              <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"></path>
+                <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.391l-4.064-3.696z"></path>
+              </svg>
+            </div>
+            <h3 style="font-size: var(--text-2xl); color: var(--color-gray-800); margin-bottom: var(--space-2); font-weight: var(--font-semibold);">Phone</h3>
+            <a href="tel:770-328-2920" style="font-size: var(--text-3xl); color: var(--color-primary); text-decoration: none; font-weight: var(--font-bold); display: block;">770-328-2920</a>
+            <p style="color: var(--color-gray-600); margin-top: var(--space-2);">Call us anytime!</p>
+          </div>
+
+          <div style="margin-bottom: var(--space-8);">
+            <div style="display: inline-block; width: 80px; height: 80px; background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+              <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+              </svg>
+            </div>
+            <h3 style="font-size: var(--text-2xl); color: var(--color-gray-800); margin-bottom: var(--space-2); font-weight: var(--font-semibold);">Email</h3>
+            <a href="mailto:Southerntentsevents@gmail.com" style="font-size: var(--text-xl); color: var(--color-primary); text-decoration: none; font-weight: var(--font-semibold); display: block;">Southerntentsevents@gmail.com</a>
+            <p style="color: var(--color-gray-600); margin-top: var(--space-2);">We'll respond within 48 hours</p>
+          </div>
+
+          <div>
+            <a href="/contact.html" class="btn btn-primary btn-lg" style="background-color: var(--color-olive); border: none;">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .contact-modal {
+        position: fixed;
+        inset: 0;
+        z-index: var(--z-modal);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-4);
+      }
+
+      .contact-modal.active {
+        display: flex;
+      }
+
+      .contact-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      .contact-modal-content {
+        position: relative;
+        background-color: var(--color-white);
+        border-radius: var(--radius-xl);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .contact-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: none;
+        font-size: 28px;
+        color: var(--color-gray-700);
+        cursor: pointer;
+        transition: all var(--transition-base);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+
+      .contact-modal-close:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+        transform: rotate(90deg);
+      }
+
+      @media (max-width: 640px) {
+        .contact-modal-content {
+          margin: var(--space-4);
+        }
+      }
+    </style>
+
+    <script>
+      // Contact modal functionality
+      (function() {
+        const modal = document.getElementById('contact-modal');
+        const openBtn = document.getElementById('faq-contact-btn');
+        const closeBtn = modal.querySelector('.contact-modal-close');
+        const backdrop = modal.querySelector('.contact-modal-backdrop');
+
+        function openModal() {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        openBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+          }
+        });
+      })();
+    </script>
   </main>
 
   <!-- Footer -->
