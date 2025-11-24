@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize scroll animations
   initScrollAnimations();
 
+  // Initialize services page anchor scrolling with header offset
+  initServicesAnchorScroll();
+
   // Initialize lazy loading for images
   lazyLoadImages();
 

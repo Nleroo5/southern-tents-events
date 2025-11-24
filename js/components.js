@@ -445,8 +445,16 @@ function initServicesAnchorScroll() {
     // Calculate absolute position of H2 from document top
     const absoluteH2Top = currentScroll + h2Rect.top;
 
-    // Final scroll position: H2 top minus header height
-    const finalScrollPosition = absoluteH2Top - headerHeight;
+    // Manual adjustments for furniture and lighting sections
+    let adjustment = 0;
+    if (sectionId === '#furniture') {
+      adjustment = 150; // Scroll down 150px more for furniture
+    } else if (sectionId === '#lighting') {
+      adjustment = 200; // Scroll down 200px more for lighting
+    }
+
+    // Final scroll position: H2 top minus header height plus adjustments
+    const finalScrollPosition = absoluteH2Top - headerHeight + adjustment;
 
     window.scrollTo({
       top: finalScrollPosition,
@@ -454,22 +462,18 @@ function initServicesAnchorScroll() {
     });
   }
 
-  // Handle page load with hash - override browser's default scroll
+  // Handle page load with hash - correct the browser's default scroll
   if (window.location.hash) {
-    // Prevent default anchor scroll
+    // Prevent default anchor scroll restoration on future navigations
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
-    // Force scroll to top immediately when script runs
-    window.scrollTo(0, 0);
-
-    // Use requestAnimationFrame to ensure DOM is ready and scroll to correct position
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scrollToSection(window.location.hash);
-      });
-    });
+    // Wait for page to fully load, then correct the scroll position
+    // Don't scroll to 0 first - just correct from wherever we are
+    setTimeout(() => {
+      scrollToSection(window.location.hash, false);
+    }, 100);
   }
 
   // Handle anchor link clicks
