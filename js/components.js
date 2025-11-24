@@ -413,12 +413,24 @@ function initScrollAnimations() {
 }
 
 // Services page anchor scrolling
-// Now handled entirely by CSS: scroll-behavior: smooth + scroll-padding-top
-// No JavaScript needed - browser handles it natively with fixed header offset
+// CSS handles same-page navigation via scroll-padding-top
+// JavaScript needed ONLY for external page loads (browser compatibility)
 function initServicesAnchorScroll() {
-  // CSS handles all anchor scrolling automatically
-  // This function left for future enhancements if needed
-  return;
+  // Only run on services page
+  if (!document.body.classList.contains('services')) return;
+
+  // Only handle page load with hash (external navigation like homepage -> services#furniture)
+  // Same-page clicks are handled by CSS scroll-padding-top
+  if (window.location.hash) {
+    // Wait for page to load, then let browser scroll
+    setTimeout(() => {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        // Use scrollIntoView which respects scroll-padding-top
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+    }, 100);
+  }
 }
 
 // Export for use in main.js
