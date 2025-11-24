@@ -450,9 +450,9 @@ function initServicesAnchorScroll() {
     let adjustment = 0;
 
     if (sectionId === '#furniture') {
-      adjustment = isMobile ? 800 : 150;  // Large positive to scroll past dance-floors
+      adjustment = isMobile ? 1900 : 150;  // Increase from 1100 - need to skip past dance-floors
     } else if (sectionId === '#lighting') {
-      adjustment = isMobile ? 1100 : 200; // Large positive to scroll past furniture
+      adjustment = isMobile ? 2200 : 200; // Increase from 1100 - need to skip past furniture
     }
 
     // Final scroll position: H2 top minus header height plus adjustments
