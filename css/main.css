@@ -894,10 +894,20 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   font-size: var(--text-lg);
 }
 
-/* Desktop only - bold feature titles */
+/* Desktop only - bold feature titles and larger text */
 @media (min-width: 769px) {
   .feature-title {
     font-weight: var(--font-bold);
+  }
+
+  /* Increase service cards body text by 1 step (18px -> 20px) */
+  .feature-card .feature-description {
+    font-size: var(--text-xl);
+  }
+
+  /* Increase "Meet Perla" section text by 2 steps (18px -> 24px) */
+  #about .feature-description {
+    font-size: var(--text-2xl);
   }
 }
 
