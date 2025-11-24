@@ -441,9 +441,13 @@ function initServicesAnchorScroll() {
     // Get header offset
     let headerOffset = getHeaderOffset();
 
-    // Fine-tune adjustment for lighting section on mobile
-    if (sectionId === '#lighting' && window.innerWidth <= 768) {
-      headerOffset -= 20; // Scroll 20px more down for lighting on mobile
+    // Fine-tune adjustments for specific sections
+    if (sectionId === '#lighting') {
+      if (window.innerWidth > 768) {
+        headerOffset -= 20; // Desktop: scroll 20px more down for lighting
+      } else {
+        headerOffset -= 20; // Mobile: scroll 20px more down for lighting
+      }
     }
 
     // Calculate final scroll position
