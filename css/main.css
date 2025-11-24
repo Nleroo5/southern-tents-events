@@ -342,11 +342,26 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
     visibility: visible;
   }
 
-  .nav-link {
+  /* Force black text in mobile menu */
+  .nav-menu .nav-link {
     width: 100%;
     padding: var(--space-3);
     text-align: center;
     font-size: var(--text-base);
+    color: var(--color-gray-700) !important;
+    text-shadow: none !important;
+  }
+
+  /* Override button styles in mobile menu */
+  .nav-menu .nav-link.btn {
+    color: var(--color-white) !important;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+  }
+
+  .nav-menu .nav-link.btn:hover {
+    color: #000 !important;
+    background-color: var(--color-primary-dark) !important;
   }
 
   .nav-link::after {
