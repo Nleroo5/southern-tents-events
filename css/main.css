@@ -2007,17 +2007,7 @@ svg {
 }
 
 /* Fixed Navigation Menu Height Calculation */
-@media (max-width: 768px) {
-  .nav-menu {
-    top: calc(100px + var(--space-5) * 2); /* Logo height + nav padding */
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-menu {
-    top: calc(80px + var(--space-5) * 2); /* Smaller logo on mobile */
-  }
-}
+/* Mobile menu positioning removed - uses fullscreen overlay (top: 0) from main mobile nav rules */
 
 /* ============================================
    CRITICAL FIXES - Hero Titles & Inline Styles
