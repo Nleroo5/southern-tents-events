@@ -413,38 +413,10 @@ function initScrollAnimations() {
 }
 
 // Services page anchor scrolling
-// Production solution: offset adjustment after browser's default scroll
+// No longer needed - removed anchor link buttons from homepage
 function initServicesAnchorScroll() {
-  // Only run on services page
-  if (!document.body.classList.contains('services')) return;
-
-  // Get header height from CSS variable
-  function getHeaderOffset() {
-    const computedStyle = getComputedStyle(document.documentElement);
-    const headerHeight = computedStyle.getPropertyValue('--header-height');
-    return parseInt(headerHeight) || 161;
-  }
-
-  // Offset anchor after browser scrolls
-  function offsetAnchor() {
-    if (window.location.hash.length !== 0) {
-      const headerOffset = getHeaderOffset();
-      window.scrollTo(window.scrollX, window.scrollY - headerOffset);
-    }
-  }
-
-  // Handle page load with hash
-  if (window.location.hash) {
-    setTimeout(offsetAnchor, 0);
-  }
-
-  // Handle anchor clicks
-  document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (anchor && anchor.getAttribute('href') !== '#') {
-      setTimeout(offsetAnchor, 0);
-    }
-  });
+  // Function kept for backwards compatibility
+  return;
 }
 
 // Export for use in main.js
