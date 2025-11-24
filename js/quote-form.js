@@ -31,51 +31,77 @@ function initQuantitySelectors() {
   const minusButtons = document.querySelectorAll('.qty-minus');
   const qtyInputs = document.querySelectorAll('.qty-input');
 
-  // Handle + button clicks
-  plusButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const itemName = this.getAttribute('data-item');
-      const input = document.querySelector(`input[name="${itemName}"]`);
-      const card = this.closest('.quantity-card');
+  // Helper function to increment quantity
+  function incrementQuantity(btn) {
+    const itemName = btn.getAttribute('data-item');
+    const input = document.querySelector(`input[name="${itemName}"]`);
+    const card = btn.closest('.quantity-card');
 
-      if (input) {
-        let currentValue = parseInt(input.value) || 0;
-        input.value = currentValue + 1;
+    if (input) {
+      let currentValue = parseInt(input.value) || 0;
+      input.value = currentValue + 1;
 
-        // Add visual feedback
+      // Add visual feedback
+      updateCardState(card, input.value);
+
+      // Small animation
+      input.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        input.style.transform = 'scale(1)';
+      }, 200);
+    }
+  }
+
+  // Helper function to decrement quantity
+  function decrementQuantity(btn) {
+    const itemName = btn.getAttribute('data-item');
+    const input = document.querySelector(`input[name="${itemName}"]`);
+    const card = btn.closest('.quantity-card');
+
+    if (input) {
+      let currentValue = parseInt(input.value) || 0;
+      if (currentValue > 0) {
+        input.value = currentValue - 1;
+
+        // Update visual feedback
         updateCardState(card, input.value);
 
         // Small animation
-        input.style.transform = 'scale(1.1)';
+        input.style.transform = 'scale(0.9)';
         setTimeout(() => {
           input.style.transform = 'scale(1)';
         }, 200);
       }
+    }
+  }
+
+  // Handle + button clicks and touches
+  plusButtons.forEach(btn => {
+    // Mouse/pointer events
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      incrementQuantity(this);
+    });
+
+    // Touch events for mobile
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      incrementQuantity(this);
     });
   });
 
-  // Handle - button clicks
+  // Handle - button clicks and touches
   minusButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const itemName = this.getAttribute('data-item');
-      const input = document.querySelector(`input[name="${itemName}"]`);
-      const card = this.closest('.quantity-card');
+    // Mouse/pointer events
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      decrementQuantity(this);
+    });
 
-      if (input) {
-        let currentValue = parseInt(input.value) || 0;
-        if (currentValue > 0) {
-          input.value = currentValue - 1;
-
-          // Update visual feedback
-          updateCardState(card, input.value);
-
-          // Small animation
-          input.style.transform = 'scale(0.9)';
-          setTimeout(() => {
-            input.style.transform = 'scale(1)';
-          }, 200);
-        }
-      }
+    // Touch events for mobile
+    btn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      decrementQuantity(this);
     });
   });
 
