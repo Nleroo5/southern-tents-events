@@ -142,11 +142,12 @@ body.privacy .header-scrolled {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linen);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  z-index: var(--z-sticky);
 }
 
 /* Ensure nav-toggle is clickable when header is scrolled */
 .header-scrolled .nav-toggle {
-  z-index: 100;
+  z-index: 1060;
   position: relative;
   pointer-events: auto;
 }
@@ -317,9 +318,10 @@ section[id] {
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: 100;
+  z-index: 1060;
   flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .nav-toggle:focus-visible {
