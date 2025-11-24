@@ -292,6 +292,8 @@ section[id] {
   background: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
+  z-index: calc(var(--z-sticky) + 1);
 }
 
 .nav-toggle-bar {
