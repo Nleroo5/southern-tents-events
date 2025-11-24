@@ -699,6 +699,11 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   transition: all var(--transition-base);
 }
 
+/* Tent images - rounded corners */
+#tents .rustic-card img {
+  border-radius: var(--radius-xl);
+}
+
 /* Wood Grain Design Options - Subtle Sketch Style */
 
 /* These cards use hand-drawn sketch-style wood patterns for an artistic, gentle feel */
