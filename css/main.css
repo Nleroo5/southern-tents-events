@@ -106,6 +106,7 @@ body.home .header-scrolled {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linen);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  z-index: var(--z-sticky);
 }
 
 /* Transparent header for services, gallery, FAQ, contact, and terms pages */
@@ -141,6 +142,12 @@ body.privacy .header-scrolled {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linen);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Ensure nav-toggle is clickable when header is scrolled */
+.header-scrolled .nav-toggle {
+  z-index: 10;
+  position: relative;
 }
 
 /* Hero sections on pages with transparent headers should extend behind the header */
