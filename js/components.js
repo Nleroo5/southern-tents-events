@@ -446,11 +446,14 @@ function initServicesAnchorScroll() {
     const absoluteH2Top = currentScroll + h2Rect.top;
 
     // Manual adjustments for furniture and lighting sections
+    // Different adjustments for mobile vs desktop
     let adjustment = 0;
+    const isMobile = window.innerWidth <= 768;
+
     if (sectionId === '#furniture') {
-      adjustment = 150; // Scroll down 150px more for furniture
+      adjustment = isMobile ? 200 : 150; // Mobile needs more adjustment
     } else if (sectionId === '#lighting') {
-      adjustment = 200; // Scroll down 200px more for lighting
+      adjustment = isMobile ? 250 : 200; // Mobile needs more adjustment
     }
 
     // Final scroll position: H2 top minus header height plus adjustments
