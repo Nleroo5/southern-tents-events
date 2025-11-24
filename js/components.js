@@ -413,24 +413,38 @@ function initScrollAnimations() {
 }
 
 // Services page anchor scrolling
-// CSS handles same-page navigation via scroll-padding-top
-// JavaScript needed ONLY for external page loads (browser compatibility)
+// Production solution: offset adjustment after browser's default scroll
 function initServicesAnchorScroll() {
   // Only run on services page
   if (!document.body.classList.contains('services')) return;
 
-  // Only handle page load with hash (external navigation like homepage -> services#furniture)
-  // Same-page clicks are handled by CSS scroll-padding-top
-  if (window.location.hash) {
-    // Wait for page to load, then let browser scroll
-    setTimeout(() => {
-      const target = document.querySelector(window.location.hash);
-      if (target) {
-        // Use scrollIntoView which respects scroll-padding-top
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
-      }
-    }, 100);
+  // Get header height from CSS variable
+  function getHeaderOffset() {
+    const computedStyle = getComputedStyle(document.documentElement);
+    const headerHeight = computedStyle.getPropertyValue('--header-height');
+    return parseInt(headerHeight) || 161;
   }
+
+  // Offset anchor after browser scrolls
+  function offsetAnchor() {
+    if (window.location.hash.length !== 0) {
+      const headerOffset = getHeaderOffset();
+      window.scrollTo(window.scrollX, window.scrollY - headerOffset);
+    }
+  }
+
+  // Handle page load with hash
+  if (window.location.hash) {
+    setTimeout(offsetAnchor, 0);
+  }
+
+  // Handle anchor clicks
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (anchor && anchor.getAttribute('href') !== '#') {
+      setTimeout(offsetAnchor, 0);
+    }
+  });
 }
 
 // Export for use in main.js
