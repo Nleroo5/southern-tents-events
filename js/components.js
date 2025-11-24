@@ -13,31 +13,58 @@ function initMobileNav() {
 
   if (!navToggle || !navMenu) return;
 
-  // Open menu
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
+  // Store scroll position when menu opens
+  let scrollPosition = 0;
 
-    // Update aria-expanded
-    const isExpanded = navMenu.classList.contains('active');
-    navToggle.setAttribute('aria-expanded', isExpanded);
+  // Open/toggle menu
+  navToggle.addEventListener('click', () => {
+    const isActive = navMenu.classList.contains('active');
+
+    if (!isActive) {
+      // Opening menu
+      scrollPosition = window.pageYOffset;
+      navToggle.classList.add('active');
+      navMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = '100%';
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close navigation menu');
+    } else {
+      // Closing menu
+      closeMenu();
+    }
   });
 
   // Close menu function
   const closeMenu = () => {
     navToggle.classList.remove('active');
     navMenu.classList.remove('active');
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollPosition);
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
   };
 
   // Close button click
   if (navClose) {
-    navClose.addEventListener('click', closeMenu);
+    navClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+    });
   }
 
   // Close menu when clicking a link
   navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => {
+      // Small delay to allow smooth transition before closing
+      setTimeout(closeMenu, 150);
+    });
   });
 
   // Close menu when clicking backdrop (outside menu list)
@@ -59,6 +86,17 @@ function initMobileNav() {
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
       closeMenu();
     }
+  });
+
+  // Handle window resize - close menu if resizing to desktop
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        closeMenu();
+      }
+    }, 250);
   });
 }
 
