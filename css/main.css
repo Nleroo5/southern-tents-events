@@ -911,6 +911,19 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   }
 }
 
+/* Mobile only - reduce Meet Perla card size */
+@media (max-width: 768px) {
+  #about .rustic-card {
+    padding: var(--space-4) var(--space-3) !important;
+    margin: 0 var(--space-2) !important;
+  }
+
+  #about .rustic-card > div:first-of-type {
+    gap: var(--space-4) !important;
+    margin-bottom: var(--space-4) !important;
+  }
+}
+
 /* ============================================
    GALLERY
    ============================================ */
