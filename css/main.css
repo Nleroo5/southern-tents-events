@@ -110,8 +110,11 @@ body.home .header {
 }
 
 body.home .header-scrolled {
-  position: sticky;
-  background-color: rgba(250, 248, 243, 0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(250, 248, 243, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linen);
@@ -147,8 +150,11 @@ body.faq .header-scrolled,
 body.contact .header-scrolled,
 body.terms .header-scrolled,
 body.privacy .header-scrolled {
-  position: sticky;
-  background-color: rgba(250, 248, 243, 0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(250, 248, 243, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-linen);
