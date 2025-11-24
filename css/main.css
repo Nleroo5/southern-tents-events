@@ -909,6 +909,26 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
   #about .feature-description {
     font-size: var(--text-2xl);
   }
+
+  /* Single column layout for Meet Perla section on desktop */
+  #about .rustic-card > div:first-of-type {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    align-items: center;
+  }
+
+  #about .rustic-card > div:first-of-type > div:first-child {
+    order: 2;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  #about .rustic-card > div:first-of-type > div:last-child {
+    order: 1;
+    max-width: 400px;
+    margin-bottom: var(--space-6);
+  }
 }
 
 /* Mobile only - reduce Meet Perla card size */
