@@ -657,7 +657,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
 @media (max-width: 767px) {
   .hero {
     background-size: auto 130% !important;
-    background-position: center 15% !important;
+    background-position: center 85% !important;
   }
 }
 
