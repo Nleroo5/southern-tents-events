@@ -105,7 +105,7 @@ function initHeaderScroll() {
   const header = document.querySelector('.header');
   if (!header) return;
 
-  const handleScroll = throttle(() => {
+  const updateHeader = () => {
     // For homepage, services, gallery, FAQ, contact, and terms pages - check if scrolled past hero section
     const hasHero = document.body.classList.contains('home') ||
                     document.body.classList.contains('services') ||
@@ -121,8 +121,15 @@ function initHeaderScroll() {
     } else {
       header.classList.remove('header-scrolled');
     }
-  }, 100);
+  };
 
+  // Throttled version for scroll events
+  const handleScroll = throttle(updateHeader, 100);
+
+  // Call on page load to set initial state
+  updateHeader();
+
+  // Listen for scroll events
   window.addEventListener('scroll', handleScroll);
 }
 
