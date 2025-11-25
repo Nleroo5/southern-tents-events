@@ -507,6 +507,7 @@ body.privacy .header:not(.header-scrolled) .nav-toggle-bar {
     border: 2px solid var(--color-primary) !important;
     margin-top: var(--space-3);
     font-size: var(--text-xl);
+    font-family: var(--font-body) !important; /* Use Arno Pro instead of Pinyon Script */
   }
 
   .nav-menu .nav-link.btn:hover {
