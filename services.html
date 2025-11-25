@@ -244,7 +244,7 @@
           </svg>
         </div>
 
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-4);">
+        <div class="tents-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-4);">
           <!-- 20x20 All Purpose Canopy -->
           <div class="card rustic-card" style="text-align: center; border: 2px solid var(--color-gray-300);">
             <picture>
@@ -379,13 +379,39 @@
       <img
         src="/images/20x40-high-peak-tent-rental-large-wedding-georgia.jpg"
         alt="20x40 high peak tent rental large wedding Georgia"
-        
+
         loading="lazy"
         decoding="async">
     </picture>
             <div class="card-body" style="padding: var(--space-2);">
               <h3 class="card-title" style="color: var(--color-olive); margin-bottom: var(--space-1); font-size: var(--text-base); min-height: 3em; display: flex; align-items: center; justify-content: center;">20 x 40 High Peak Tent</h3>
               <p style="font-size: var(--text-xl); color: var(--color-primary); font-weight: var(--font-bold);">$700.00</p>
+            </div>
+          </div>
+
+          <!-- 30x45 Wedding Tent -->
+          <div class="card rustic-card" style="text-align: center; border: 2px solid var(--color-gray-300);">
+            <img
+              src="/images/30x45-wedding-tent-rental-senoia-georgia.jpg"
+              alt="30x45 wedding tent rental Senoia Georgia"
+              loading="lazy"
+              decoding="async">
+            <div class="card-body" style="padding: var(--space-2);">
+              <h3 class="card-title" style="color: var(--color-olive); margin-bottom: var(--space-1); font-size: var(--text-base); min-height: 3em; display: flex; align-items: center; justify-content: center;">30 x 45 Wedding Tent</h3>
+              <p style="font-size: var(--text-xl); color: var(--color-primary); font-weight: var(--font-bold);">$1,185.00</p>
+            </div>
+          </div>
+
+          <!-- 30x60 Wedding Tent -->
+          <div class="card rustic-card" style="text-align: center; border: 2px solid var(--color-gray-300);">
+            <img
+              src="/images/30x60-wedding-tent-rental-senoia-georgia.jpg"
+              alt="30x60 wedding tent rental Senoia Georgia"
+              loading="lazy"
+              decoding="async">
+            <div class="card-body" style="padding: var(--space-2);">
+              <h3 class="card-title" style="color: var(--color-olive); margin-bottom: var(--space-1); font-size: var(--text-base); min-height: 3em; display: flex; align-items: center; justify-content: center;">30 x 60 Wedding Tent</h3>
+              <p style="font-size: var(--text-xl); color: var(--color-primary); font-weight: var(--font-bold);">$1,300.00</p>
             </div>
           </div>
         </div>
@@ -869,6 +895,36 @@
       </div>
     </div>
   </footer>
+
+  <style>
+    /* Responsive Tents Grid Layout */
+    .tents-grid {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 640px) {
+      .tents-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tablet: 2 columns */
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .tents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Desktop: 3 columns */
+    @media (min-width: 1025px) {
+      .tents-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 
   <script src="/js/bundle.min.js" defer></script>
 </body>
