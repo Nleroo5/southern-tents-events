@@ -21,10 +21,12 @@ function formatQuoteItems(formData) {
   const items = [];
 
   const itemList = {
-    'tent-20x20-canopy': { name: '20x20 All Purpose Canopy', price: '$300.00' },
+    'tent-20x20-canopy': { name: '20x20 Pole Tent', price: '$300.00' },
     'tent-20x20-peak': { name: '20x20 High Peak Tent', price: '$375.00' },
-    'tent-20x30-canopy': { name: '20x30 All Purpose Canopy', price: '$380.00' },
+    'tent-20x30-canopy': { name: '20x30 Pole Tent', price: '$380.00' },
     'tent-20x40-peak': { name: '20x40 High Peak Tent', price: '$700.00' },
+    'tent-30x45-wedding': { name: '30x45 Frame Tent', price: '$1,185.00' },
+    'tent-30x60-wedding': { name: '30x60 Frame Tent', price: '$1,300.00' },
     'dancefloor-12x12': { name: '12x12 Dark Maple Dance Floor', price: '$200.00' },
     'dancefloor-15x15': { name: '15x15 Dark Maple Dance Floor', price: '$350.00' },
     'dancefloor-18x18': { name: '18x18 Dark Maple Dance Floor', price: '$500.00' },
